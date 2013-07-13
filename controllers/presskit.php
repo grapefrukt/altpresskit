@@ -1,9 +1,11 @@
 <?php 
 require 'controller.php';
+require 'models/developer.php';
 
-class Presskit extends Controller {
+class PresskitController extends Controller {
 	public function index($id = 3){
-		$this->render('index', array("id" => $id));
+		$developer = new Developer($this->parse('data/developer.xml'));
+		$this->render('index', array('id' => $id, 'developer' => $developer));
 	}
 }
 ?>

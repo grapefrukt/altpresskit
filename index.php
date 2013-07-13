@@ -10,7 +10,7 @@ $router = new Router();
 
 $router->setBasePath('/g-presskit');
 
-$router->map('/', array('controller' => 'Presskit', 'action' => 'index'));
+$router->map('/', array('controller' => 'PresskitController', 'action' => 'index'));
 $router->map('/:id', array('controller' => 'Presskit', 'action' => 'index'));
 $router->map('/users/','users#create', array('methods' => 'POST', 'name' => 'users_create'));
 $router->map('/users/:id/edit/', 'users#edit', array('methods' => 'GET', 'name' => 'users_edit', 'filters' => array('id' => '(\d+)')));
