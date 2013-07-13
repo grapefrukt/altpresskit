@@ -1,4 +1,4 @@
-<div id="factsheet" class="four columns">
+<div id="factsheet" class="five columns">
 	<h2>Factsheet</h2>
 	<dl>
 		<dt>Developer:</dt>
@@ -19,25 +19,27 @@
 			<dd><?php echo ViewHelper::link($social['link'], $social['name']); ?></dd>
 		<?php endforeach; ?>
 
-		<dt>Phone:</dt>
-		<dd><?php echo ViewHelper::callto($developer->phone); ?></dd>
-
-		<dt>Products:</dt>
+		<dt>Releases:</dt>
 		<?php foreach($developer->games as $game): ?>
 			<dd><?php echo ViewHelper::link($game->directory, $game->title); ?></dd>
 		<?php endforeach; ?>
+
+		<dt>Phone:</dt>
+		<dd><?php echo ViewHelper::callto($developer->phone); ?></dd>
 	</dl>
 </div>
 
-<div id="description" class="ten columns">
+<div id="description" class="eleven columns">
 	<h2>Description</h2>
 	<p><?php echo $developer->description; ?></p>
 </div>
 
-<div id="history" class="ten columns">
+<div id="history" class="eleven columns">
 	<h2>History</h2>
 	<?php foreach($developer->histories as $history): ?>
 		<h3><?php echo $history['header']; ?></h3>
 		<p><?php echo $history['text']; ?></p>
 	<?php endforeach; ?>
 </div>
+
+<hr class="sixteen columns" />
