@@ -1,11 +1,15 @@
 <?php 
+
+require 'helpers/viewhelper.php';
+
 class Controller {
 	
-	public $title = "Presskit";	
+	public $title = "Presskit";
 
-	protected function render($view, $vars){
-		extract($vars);
-		include 'views/' . $view . '.php';
+	protected $view;
+
+	public function __construct(){
+		$this->view = new ViewHelper();
 	}
 
 	protected function parse($xmlpath){

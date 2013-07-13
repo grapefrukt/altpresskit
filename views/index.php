@@ -7,5 +7,5 @@
 	<dd><?php echo $developer->foundingDate; ?></dd>
 
 	<dt>Website:</dt>
-	<dd><?php echo $developer->foundingDate; ?></dd>
+	<dd><?php echo $view->link($developer->website); ?></dd>
 </dl>
