@@ -38,9 +38,7 @@
 
 	<!-- Primary Page Layout
 	================================================== -->
-
-	<!-- Delete everything in this .container and get started on your own site! -->
-
+	
 	<div class="container">
 		<?php echo $content; ?>
 	</div><!-- container -->
