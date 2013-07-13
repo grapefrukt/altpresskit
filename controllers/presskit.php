@@ -3,9 +3,10 @@ require 'controller.php';
 require 'models/developer.php';
 
 class PresskitController extends Controller {
-	public function index($id = 3){
+	public function index(){
 		$developer = new Developer($this->parse('data/developer.xml'));
-		$this->view->render('index', array('id' => $id, 'developer' => $developer));
+		ViewHelper::render('index', array('developer' => $developer));
+		ViewHelper::render('trailers', array('trailers' => $developer->trailers));
 	}
 }
 ?>

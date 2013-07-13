@@ -8,7 +8,7 @@ class ViewHelper {
 	}
 
 	public static function link($url, $text = ''){
-		if($text == '') $text = $url;
+		if ($text == '') $text = $url;
 		return '<a href="' . $url . '">' . $text . '</a>';
 	}
 
