@@ -1,10 +1,15 @@
 <?php
+
+require 'helpers/filehelper.php';
+
 class Model {
 	
 	private $data = array();
+	public $images = array();
 
-	public function __construct($data) {
+	public function __construct($directory, $data) {
 		$this->data = $data;
+		$this->images = FileHelper::getImages('data/' . $directory . '/images');
 	}
 
 	public function __get($param) {

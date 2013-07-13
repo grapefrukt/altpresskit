@@ -21,6 +21,11 @@
 
 		<dt>Phone:</dt>
 		<dd><?php echo ViewHelper::callto($developer->phone); ?></dd>
+
+		<dt>Products:</dt>
+		<?php foreach($developer->games as $game): ?>
+			<dd><?php echo ViewHelper::link($game->directory, $game->title); ?></dd>
+		<?php endforeach; ?>
 	</dl>
 </div>
 

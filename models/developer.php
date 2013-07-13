@@ -1,14 +1,19 @@
 <?php
 
 require 'model.php';
+require 'helpers/xmlhelper.php';
 
 class Developer extends Model {
 	
-	public $games;
+	public $games = array();
 
-	public function __construct($data) {
-		parent::__construct($data);
-		$games = array();
+	public function __construct() {
+		parent::__construct('.', XMLHelper::parse('data/data.xml'));
+
+		$gamedirs = FileHelper::getGames('data');
+		foreach($gamedirs as $gamedir){
+			$this->games[] = new Game($gamedir);
+		}
 	}
 
 }
