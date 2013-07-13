@@ -2,23 +2,22 @@
 
 class ViewHelper {
 
-	public function render($name, $vars){
+	public static function render($name, $vars){
 		extract($vars);
-		extract(array('view' => $this));
 		include 'views/' . $name . '.php';
 	}
 
-	public function link($url, $text = ''){
+	public static function link($url, $text = ''){
 		if($text == '') $text = $url;
 		return '<a href="' . $url . '">' . $text . '</a>';
 	}
 
-	public function email($email, $text = ''){
-		return $this->link('mailto:' . $email, $text == '' ? $email : $text);
+	public static function email($email, $text = ''){
+		return ViewHelper::link('mailto:' . $email, $text == '' ? $email : $text);
 	}
 
-	public function callto($phone, $text = ''){
-		return $this->link('callto:' . urlencode($phone), $text == '' ? $phone : $text);
+	public static function callto($phone, $text = ''){
+		return ViewHelper::link('callto:' . urlencode($phone), $text == '' ? $phone : $text);
 	}
 }
 

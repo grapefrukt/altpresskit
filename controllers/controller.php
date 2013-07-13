@@ -6,12 +6,6 @@ class Controller {
 	
 	public $title = "Presskit";
 
-	protected $view;
-
-	public function __construct(){
-		$this->view = new ViewHelper();
-	}
-
 	protected function parse($xmlpath){
 		libxml_use_internal_errors(true);
 		$xml = simplexml_load_file($xmlpath, 'SimpleXMLElement', LIBXML_NOCDATA);

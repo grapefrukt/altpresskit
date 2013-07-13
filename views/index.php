@@ -9,18 +9,18 @@
 		<dd><?php echo $developer->foundingDate; ?></dd>
 
 		<dt>Website:</dt>
-		<dd><?php echo $view->link($developer->website); ?></dd>
+		<dd><?php echo ViewHelper::link($developer->website); ?></dd>
 
 		<dt>Press / Business Contact:</dt>
-		<dd><?php echo $view->email($developer->pressContact); ?></dd>
+		<dd><?php echo ViewHelper::email($developer->pressContact); ?></dd>
 
 		<dt>Social:</dt>
 		<?php foreach($developer->social as $social): ?>
-			<dd><?php echo $view->link($social['link'], $social['name']); ?></dd>
+			<dd><?php echo ViewHelper::link($social['link'], $social['name']); ?></dd>
 		<?php endforeach; ?>
 
 		<dt>Phone:</dt>
-		<dd><?php echo $view->callto($developer->phone); ?></dd>
+		<dd><?php echo ViewHelper::callto($developer->phone); ?></dd>
 	</dl>
 </div>
 
