@@ -15,7 +15,7 @@
 		<dd><?php echo ViewHelper::email($developer->pressContact); ?></dd>
 
 		<dt>Social:</dt>
-		<?php foreach($developer->social as $social): ?>
+		<?php foreach($developer->socials as $social): ?>
 			<dd><?php echo ViewHelper::link($social['link'], $social['name']); ?></dd>
 		<?php endforeach; ?>
 
@@ -31,7 +31,7 @@
 
 <div id="history" class="ten columns">
 	<h2>History</h2>
-	<?php foreach($developer->history as $history): ?>
+	<?php foreach($developer->histories as $history): ?>
 		<h3><?php echo $history['header']; ?></h3>
 		<p><?php echo $history['text']; ?></p>
 	<?php endforeach; ?>
