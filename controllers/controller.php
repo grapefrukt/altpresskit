@@ -22,7 +22,28 @@ class Controller {
 
 		if(!$xml) die();
 
-		return $this->xml2array($xml);
+		$data = $this->xml2array($xml);
+
+		Controller::collapse(&$data, 'socials', 'social');
+		Controller::collapse(&$data, 'histories', 'history');
+		Controller::collapse(&$data, 'trailers', 'trailer');
+
+		return $data;
+	}
+
+	private static function collapse($data, $plural, $singular){
+		$data[$singular] = $data[$plural][$singular];
+
+		// the xml2array function behaves slightly differently if a node has one or multiple children
+		// so we need to check if the result of this operation is an associative array (when it's a single item)
+		// and if so, we nest it in an array
+		if(Controller::isAssoc($data[$singular])) $data[$singular] = array($data[$singular]);
+		unset($data[$plural]);
+	}
+
+	// stolen from http://stackoverflow.com/questions/173400/php-arrays-a-good-way-to-check-if-an-array-is-associative-or-numeric/4254008#4254008
+	private static function isAssoc($array) {
+		return (bool)count(array_filter(array_keys($array), 'is_string'));
 	}
 
 	private static function xml2array ( $xmlObject, $out = array ()) {
