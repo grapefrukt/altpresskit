@@ -28,7 +28,7 @@ class Controller {
 	private static function xml2array ( $xmlObject, $out = array ()) {
 		foreach ( (array) $xmlObject as $index => $node ){
 			$index = Controller::dashesToCamelCase($index);
-			$out[$index] = ( is_object ( $node ) ||  is_array ( $node ) ) ? Controller::xml2array ( $node ) : $node;
+			$out[$index] = ( is_object ( $node ) ||  is_array ( $node ) ) ? Controller::xml2array ( $node ) : trim($node);
 		}
 		return $out;
 	}
