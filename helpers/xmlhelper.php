@@ -27,6 +27,7 @@ class XMLHelper {
 	}
 
 	private static function collapse($data, $plural, $singular){
+		if(!isset($data[$plural])) return;
 		$data[$plural] = $data[$plural][$singular];
 
 		// the xml2array function behaves slightly differently if a node has one or multiple children
