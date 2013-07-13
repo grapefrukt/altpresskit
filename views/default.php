@@ -8,7 +8,7 @@
 	<!-- Basic Page Needs
   ================================================== -->
 	<meta charset="utf-8">
-	<title><?php echo $controller->title; ?></title>
+	<title><?php echo ViewHelper::$title; ?></title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
