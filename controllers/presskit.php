@@ -16,6 +16,7 @@ class PresskitController extends Controller {
 		ViewHelper::render('historydescription', array('data' => $this->developer));
 		ViewHelper::render('images', array('images' => $this->developer->images));
 		ViewHelper::render('trailers', array('trailers' => $this->developer->trailers));
+		ViewHelper::render('additionals', array('data' => $this->developer));
 		ViewHelper::render('teamcontact', array('data' => $this->developer, 'developer' => $this->developer));
 	}
 
