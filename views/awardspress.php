@@ -9,6 +9,9 @@
 	<?php endforeach; ?>
 	</ul>
 </div>
+
+<hr class="sixteen columns" />
+
 <?php endif; ?>
 
 <?php if(isset($data->awards)): ?>
@@ -25,4 +28,7 @@
 	<?php endforeach; ?>
 	</ul>
 </div>
+
+<hr class="sixteen columns" />
+
 <?php endif; ?>

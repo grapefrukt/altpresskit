@@ -21,6 +21,12 @@
 		} else if (isset($trailer['vimeo'])){
 			echo '<iframe src="http://player.vimeo.com/video/' . $trailer['vimeo'] . '" width="100%" height="100%"  frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
 		}
+
+		echo '</div>';
+
+		$count++;	
 	}
 	?>
 </div>
+
+<hr class="sixteen columns" />

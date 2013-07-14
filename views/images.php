@@ -22,6 +22,8 @@
 	</ul>
 </div>
 
+<hr class="sixteen columns" />
+
 <?php if(isset($logo)): ?>
 <div id="logo" class="sixteen columns">
 	<h2>Logo</h2>
@@ -30,4 +32,7 @@
 	<?php endif; ?>
 	<a href="<?php echo $logo; ?>"><img class="sixteen columns alpha omega" src="<?php echo $logo; ?>" /></a>
 </div>
+
+<hr class="sixteen columns" />
 <?php endif; ?>
+
