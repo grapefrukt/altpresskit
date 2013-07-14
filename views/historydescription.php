@@ -17,9 +17,19 @@
 
 <?php if(isset($data->features)): ?>
 	<div id="history" class="eleven columns">
-		<ul>
+		<ul class="square">
 		<?php foreach($data->features as $feature){
 			echo '<li>', $feature, '</li>';
+		} ?>
+		</ul>
+	</div>
+<?php endif; ?>
+
+<?php if(isset($data->games)): ?>
+	<div id="games" class="eleven columns">
+		<ul class="square">
+		<?php foreach($data->games as $game){
+			echo '<li>', ViewHelper::link($game->directory, $game->title), '</li>';
 		} ?>
 		</ul>
 	</div>
