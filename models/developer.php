@@ -12,7 +12,7 @@ class Developer extends Model {
 
 		$gamedirs = FileHelper::getGames('data');
 		foreach($gamedirs as $gamedir){
-			$this->games[] = new Game($gamedir);
+			$this->games[$gamedir] = new Game($gamedir);
 		}
 	}
 

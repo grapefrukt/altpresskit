@@ -1,5 +1,8 @@
 <div id="images" class="sixteen columns">
 	<h2>Images</h2>
+	<?php if(isset($zip)): ?>
+		<p><a href="<?php echo $zip; ?>">Download all images as an archive.</a></p>
+	<?php endif; ?>
 	<ul>
 	<?php 
 	$count = 0;
@@ -18,3 +21,13 @@
 	?>
 	</ul>
 </div>
+
+<?php if(isset($logo)): ?>
+<div id="logo" class="sixteen columns">
+	<h2>Logo</h2>
+	<?php if(isset($zip)): ?>
+		<p><a href="<?php echo $zip; ?>">Download all logo as an archive.</a></p>
+	<?php endif; ?>
+	<a href="<?php echo $logo; ?>"><img class="sixteen columns alpha omega" src="<?php echo $logo; ?>" /></a>
+</div>
+<?php endif; ?>

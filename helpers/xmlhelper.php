@@ -23,11 +23,18 @@ class XMLHelper {
 		XMLHelper::collapse(&$data, 'credits', 'credit');
 		XMLHelper::collapse(&$data, 'contacts', 'contact');
 
+		XMLHelper::collapse(&$data, 'platforms', 'platform');
+		XMLHelper::collapse(&$data, 'prices', 'price');
+		XMLHelper::collapse(&$data, 'features', 'feature');
+		XMLHelper::collapse(&$data, 'awards', 'award');
+		XMLHelper::collapse(&$data, 'quotes', 'quote');
+
 		return $data;
 	}
 
 	private static function collapse($data, $plural, $singular){
 		if(!isset($data[$plural])) return;
+		if(!isset($data[$plural][$singular])) return;
 		$data[$plural] = $data[$plural][$singular];
 
 		// the xml2array function behaves slightly differently if a node has one or multiple children
