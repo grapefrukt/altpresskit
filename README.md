@@ -10,6 +10,13 @@ Pull requests are welcomed, but keep in mind the intent: Stay minimal and effici
 
 The idea is also to stay backwards compatible with the original, but this may change in the future. 
 
+## Added features
+
+* Responsive layout
+* Pretty urls
+* Valid HTML5
+* Nice cropping of thumbnails
+
 ## Who made this?
 
 * [Martin Jonasson](http://grapefrukt.com)
