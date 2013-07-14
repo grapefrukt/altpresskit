@@ -1,18 +1,28 @@
 <?php 
 	function videolink($key, $label, $data, $list){
 		if (!isset($data[$key])) return;
-		$list[] = ViewHelper::link('trailers/' . $data[$key], $label);
+		if($key == 'youtube'){
+			$list[] = ViewHelper::link('http://youtu.be/' . $data[$key], $label);
+		} else {
+			$list[] = ViewHelper::link('trailers/' . $data[$key], $label);
+		}
 	}
 ?>
 <div id="trailers" class="sixteen columns">
 	<h2>Videos</h2>
-	<?php foreach($trailers as $trailer){
+	<?php 
+	$count = 0;
+	foreach($trailers as $trailer){
 		$links = array();
 		videolink('youtube', 'YouTube', $trailer, &$links);
 		videolink('vimeo', 'Vimeo', $trailer, &$links);
 		videolink('mov', '.MOV', $trailer, &$links);
 		videolink('mp4', '.MP4', $trailer, &$links);
 
+		$class = 'alpha';
+		if ($count % 2 == 1) $class = 'omega';
+
+		echo '<div class="video eight columns ', $class, '">';
 		echo '<p class="videolinks">', implode(', ', $links), '</p>';
 
 		// embeds
