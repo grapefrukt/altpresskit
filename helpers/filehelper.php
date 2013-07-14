@@ -2,7 +2,7 @@
 
 class FileHelper {
 
-	private static $blacklist = array('.', '..', 'images', 'trailers', 'README');
+	private static $blacklist = array('.', '..', 'images', 'trailers', 'README', 'Thumbs.db', '.DS_Store');
 
 	public static function getGames($path){
 		if (!($handle = opendir($path))) return null;
