@@ -14,7 +14,7 @@ class Model {
 
 	public function __construct($directory, $data) {
 		$this->data = $data;
-		$this->images = FileHelper::getImages('data/' . $directory . '/images');
+		$this->images = FileHelper::getImages('data' . (strlen($directory) > 0 ? '/' : '') . $directory . '/images');
 
 		foreach($this->images as $key => $image){
 			if (Model::endsWith($image, 'logo.png')) {
