@@ -24,7 +24,7 @@
 
 		<dt>Regular Price:</dt>
 		<?php foreach($data->prices as $price): ?>
-			<dl>
+			<dl class="prices">
 				<dt><?php echo $price['currency']; ?></dt>
 				<dd><?php echo $price['value']; ?></dd>
 			</dl>

@@ -16,7 +16,8 @@
 <?php endif; ?>
 
 <?php if(isset($data->features)): ?>
-	<div id="history" class="eleven columns">
+	<div id="features" class="eleven columns">
+		<h2>Features</h2>
 		<ul class="square">
 		<?php foreach($data->features as $feature){
 			echo '<li>', $feature, '</li>';
@@ -27,6 +28,7 @@
 
 <?php if(isset($data->games)): ?>
 	<div id="games" class="eleven columns">
+		<h2>Projects</h2>
 		<ul class="square">
 		<?php foreach($data->games as $game){
 			echo '<li>', ViewHelper::link($game->directory, $game->title), '</li>';

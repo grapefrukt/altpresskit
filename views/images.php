@@ -11,9 +11,7 @@
 		if($count % 4 == 0) $class = 'alpha';
 		if($count % 4 == 3) $class = 'omega'; ?>
 		<li class="four columns <?php echo $class; ?>">
-			<a href="<?php echo $image; ?>">
-				<img src="<?php echo $image; ?>" />
-			</a>
+			<a href="<?php echo $image; ?>" style="background-image: url(<?php echo $image; ?>);" ></a>
 		</li>
 		<?php 
 		$count++;
