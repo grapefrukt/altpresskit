@@ -21,22 +21,25 @@
 
 		$class = 'alpha';
 		if ($count % 2 == 1) $class = 'omega';
+		?>
 
-		echo '<div class="video eight columns ', $class, '">';
-		echo '<p>', $trailer['name'], '<span class="videolinks">', implode(', ', $links), '</span></p>';
+		<div class="video eight columns <?php echo $class; ?>">
+			<p>
+				<?php if(isset($trailer['name'])) echo $trailer['name']; ?>
+				<span class="videolinks"><?php echo implode(', ', $links); ?></span>
+			</p>
 
-		echo '<div class="widescreen">';
-		// embeds
-		if(isset($trailer['youtube'])){
-			echo '<iframe width="100%" height="100%" src="http://www.youtube.com/embed/' . $trailer['youtube'] . '?autohide=1&amp;hd=1&amp;controls=1&amp;modestbranding=1&amp;rel=0&amp;showinfo=1&amp;allowfullscreen" frameborder="0" allowfullscreen></iframe>';
-		} else if (isset($trailer['vimeo'])){
-			echo '<iframe src="http://player.vimeo.com/video/' . $trailer['vimeo'] . '" width="100%" height="100%"  frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
-		}
+			<div class="widescreen">
+				<?php if(isset($trailer['youtube'])): ?>
+					<iframe width="100%" height="100%" src="http://www.youtube.com/embed/<?php echo $trailer['youtube'] ?>?autohide=1&amp;hd=1&amp;controls=1&amp;modestbranding=1&amp;rel=0&amp;showinfo=1&amp;allowfullscreen" frameborder="0" allowfullscreen></iframe>
+				<?php elseif (isset($trailer['vimeo'])): ?>
+					<iframe src="http://player.vimeo.com/video/'<?php echo $trailer['vimeo'] ?>" width="100%" height="100%"  frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+				<?php endif; ?>
+			</div>
+		</div>
 
-		echo '</div>';
-		echo '</div>';
-
-		$count++;	
+		<?php
+		$count++;
 	}
 	?>
 </div>
