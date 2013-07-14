@@ -31,9 +31,9 @@
 
 			<div class="widescreen">
 				<?php if(isset($trailer['youtube'])): ?>
-					<iframe width="100%" height="100%" src="http://www.youtube.com/embed/<?php echo $trailer['youtube'] ?>?autohide=1&amp;hd=1&amp;controls=1&amp;modestbranding=1&amp;rel=0&amp;showinfo=1&amp;allowfullscreen" frameborder="0" allowfullscreen></iframe>
+					<iframe src="http://www.youtube.com/embed/<?php echo $trailer['youtube'] ?>?autohide=1&amp;hd=1&amp;controls=1&amp;modestbranding=1&amp;rel=0&amp;showinfo=1&amp;allowfullscreen" allowfullscreen></iframe>
 				<?php elseif (isset($trailer['vimeo'])): ?>
-					<iframe src="http://player.vimeo.com/video/'<?php echo $trailer['vimeo'] ?>" width="100%" height="100%"  frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+					<iframe src="http://player.vimeo.com/video/'<?php echo $trailer['vimeo'] ?>" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 				<?php endif; ?>
 			</div>
 		</div>
