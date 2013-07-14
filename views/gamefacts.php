@@ -21,14 +21,13 @@
 
 		<dt>Website:</dt>
 		<dd><?php echo ViewHelper::link($data->website); ?></dd>
-
-		<dt>Regular Price:</dt>
-		<?php foreach($data->prices as $price): ?>
-			<dl class="prices">
-				<dt><?php echo $price['currency']; ?></dt>
-				<dd><?php echo $price['value']; ?></dd>
-			</dl>
-		<?php endforeach; ?>
-
 	</dl>
+
+	<p><em>Regular Price:</em></p>
+	<?php foreach($data->prices as $price): ?>
+		<dl class="prices">
+			<dt><?php echo $price['currency']; ?></dt>
+			<dd><?php echo $price['value']; ?></dd>
+		</dl>
+	<?php endforeach; ?>
 </div>
