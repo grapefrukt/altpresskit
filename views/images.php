@@ -28,7 +28,7 @@
 	<?php if(isset($zip)): ?>
 		<p><a href="<?php echo $zip; ?>">Download all logo as an archive.</a></p>
 	<?php endif; ?>
-	<a href="<?php echo $logo; ?>"><img class="sixteen columns alpha omega" src="<?php echo $logo; ?>" /></a>
+	<a href="<?php echo $logo; ?>"><img class="sixteen columns alpha omega" src="<?php echo $logo; ?>" alt="Logo" /></a>
 </div>
 
 <hr class="sixteen columns" />
