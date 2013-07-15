@@ -53,10 +53,6 @@
 	border: none;
 }
 
-#features {
-	float: right;
-}
-
 dt:not(:first-child) {
 	padding-top: 10px;
 }
