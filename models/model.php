@@ -7,10 +7,10 @@ class Model {
 	private $data = array();
 
 	public $images = array();	
-	public $logo = '';
+	public $logo;
 
-	public $logoZip = '';
-	public $imageZip = '';
+	public $logoZip;
+	public $imageZip;
 
 	public function __construct($directory, $data) {
 		$this->data = $data;

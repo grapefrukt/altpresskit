@@ -7,8 +7,8 @@
 	<ul>
 	<?php 
 	$count = 0;
-	$isodd = sizeof($images) % 2 == 1;
-	foreach($images as $image) {
+	$isodd = sizeof($data->images) % 2 == 1;
+	foreach($data->images as $image) {
 		$class = 'six columns ';
 
 		// if there's an odd number of images, display the first one big 
@@ -32,14 +32,14 @@
 
 <hr class="twelve columns" />
 
-<?php if(isset($logo)): ?>
+<?php if(isset($data->logo)): ?>
 <div id="logo" class="twelve columns">
 	<h2>Logo
-		<?php if(isset($logoZip)): ?>
-			<a class="download" title="Download all logos as an archive" href="<?php echo $logoZip; ?>"><?php echo ViewHelper::icon('download'); ?></a>
+		<?php if(isset($data->logoZip)): ?>
+			<a class="download" title="Download all logos as an archive" href="<?php echo $data->logoZip; ?>"><?php echo ViewHelper::icon('download'); ?></a>
 		<?php endif; ?>
 	</h2>
-	<a href="<?php echo $logo; ?>"><img class="twelve columns alpha omega" src="<?php echo $logo; ?>" alt="Logo" /></a>
+	<a href="<?php echo $data->logo; ?>"><img class="twelve columns alpha omega" src="<?php echo $data->logo; ?>" alt="Logo" /></a>
 </div>
 
 <hr class="twelve columns" />
