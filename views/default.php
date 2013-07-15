@@ -46,7 +46,7 @@
 			}
 			echo '</ul>';
 		} ?>
-
+		
 		<div id="menu" class="four columns">
 			<ul>
 				<li><a href="#factsheet">Factsheet</a></li>
@@ -63,6 +63,8 @@
 				<li><a href="#contact">Contact</a></li>
 			</ul>
 		</div>
+
+		<div id="dummy-menu" class="four columns">&nbsp;</div>
 
 		<?php echo $content; ?>
 	</div><!-- container -->
