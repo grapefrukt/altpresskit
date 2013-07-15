@@ -33,12 +33,23 @@
 }
 
 .video p {
-	margin: 10px 5px 0 5px;
-	display: inline;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow-x: hidden;
+	margin-bottom: 5px;
 }
 
 .videolinks {
 	float: right;
+	margin-bottom: 5px;
+}
+
+.videolinks li {
+	display: inline;
+}
+
+.videolinks a {
+	text-decoration: none;
 }
 
 .video iframe {
@@ -93,6 +104,13 @@ dt {
 
 .video, #images li {
 	padding-bottom: 10px;
+}
+
+.download {
+	text-align: right;
+	text-decoration: none !important;
+	font-size: 55%;
+	float: right;
 }
 
 hr {

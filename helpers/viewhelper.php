@@ -21,6 +21,10 @@ class ViewHelper {
 	public static function callto($phone, $text = ''){
 		return ViewHelper::link('callto:' . urlencode($phone), $text == '' ? $phone : $text);
 	}
+
+	public static function icon($name){
+		return '<i class="icon-' . $name . ' icon-large"></i>';
+	}
 }
 
 ?>

@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="skeleton/stylesheets/base.css">
 	<link rel="stylesheet" href="skeleton/stylesheets/skeleton.css">
 	<link rel="stylesheet" href="stylesheets/layout.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -46,7 +47,7 @@
 			}
 			echo '</ul>';
 		} ?>
-		
+
 		<div id="menu" class="four columns">
 			<ul>
 				<li><a href="#factsheet">Factsheet</a></li>

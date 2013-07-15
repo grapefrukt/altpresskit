@@ -3,6 +3,8 @@
 		if (!isset($data[$key])) return;
 		if($key == 'youtube'){
 			$list[] = ViewHelper::link('http://youtu.be/' . $data[$key], $label);
+		} else if($key == 'vimeo'){
+			$list[] = ViewHelper::link('https://vimeo.com/' . $data[$key], $label);
 		} else {
 			$list[] = ViewHelper::link('trailers/' . $data[$key], $label);
 		}
@@ -14,20 +16,24 @@
 	$count = 0;
 	foreach($trailers as $trailer){
 		$links = array();
-		videolink('youtube', 'YouTube', $trailer, &$links);
-		videolink('vimeo', 'Vimeo', $trailer, &$links);
-		videolink('mov', '.MOV', $trailer, &$links);
-		videolink('mp4', '.MP4', $trailer, &$links);
+		videolink('youtube', ViewHelper::icon('youtube-play'), $trailer, &$links);
+		videolink('vimeo', ViewHelper::icon('play-sign'), $trailer, &$links);
+		videolink('mov', ViewHelper::icon('download'), $trailer, &$links);
+		videolink('mp4', ViewHelper::icon('download'), $trailer, &$links);
 
 		$class = 'alpha';
 		if ($count % 2 == 1) $class = 'omega';
 		?>
 
 		<div class="video six columns <?php echo $class; ?>">
-			<p>
-				<?php if(isset($trailer['name'])) echo $trailer['name']; ?>
-				<span class="videolinks"><?php echo implode(', ', $links); ?></span>
-			</p>
+			<ul class="videolinks">
+				<?php foreach($links as $link): ?>
+					<li><?php echo $link; ?></li>
+				<?php endforeach; ?>
+			</ul>
+			<?php if(isset($trailer['name'])): ?>
+				<p><?php echo $trailer['name']; ?></p>
+			<?php endif; ?>
 
 			<div class="widescreen">
 				<?php if(isset($trailer['youtube'])): ?>
