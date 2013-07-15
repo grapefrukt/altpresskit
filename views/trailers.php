@@ -8,7 +8,7 @@
 		}
 	}
 ?>
-<div id="trailers" class="sixteen columns">
+<div id="trailers" class="twelve columns">
 	<h2>Videos</h2>
 	<?php 
 	$count = 0;
@@ -23,7 +23,7 @@
 		if ($count % 2 == 1) $class = 'omega';
 		?>
 
-		<div class="video eight columns <?php echo $class; ?>">
+		<div class="video six columns <?php echo $class; ?>">
 			<p>
 				<?php if(isset($trailer['name'])) echo $trailer['name']; ?>
 				<span class="videolinks"><?php echo implode(', ', $links); ?></span>
@@ -44,4 +44,4 @@
 	?>
 </div>
 
-<hr class="sixteen columns" />
+<hr class="twelve columns" />

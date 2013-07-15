@@ -1,4 +1,4 @@
-<div id="factsheet" class="five columns">
+<div id="factsheet" class="three columns">
 	<h2>Factsheet</h2>
 	<dl>
 		<dt>Developer:</dt>

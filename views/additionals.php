@@ -1,4 +1,4 @@
-<div id="additionals" class="sixteen columns">
+<div id="additionals" class="twelve columns">
 	<h2>Additional Links</h2>
 	<dl>
 		<?php foreach($data->additionals as $additional): ?>
@@ -8,4 +8,4 @@
 	</dl>
 </div>
 
-<hr class="sixteen columns" />
+<hr class="twelve columns" />

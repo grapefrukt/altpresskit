@@ -27,16 +27,14 @@
 }
 
 .widescreen {
-	position: relative;
 	padding-bottom: 56%;
 	height: 0;
-	margin: 1%;
-	margin-bottom: 2% !important;
-	clear: both;
+	clear: right;
 }
 
 .video p {
 	margin: 10px 5px 0 5px;
+	display: inline;
 }
 
 .videolinks {
@@ -74,8 +72,32 @@ dt {
 	min-width: 65px;
 }
 
-/* #Page Styles
-================================================== */
+#menu li {
+	margin-bottom: 5px;
+}
+
+#menu li a {
+	display: block;
+	padding: 10px;
+	margin: 0;
+	background: lightgrey;
+}
+
+.container > *:not(#menu):not(#factsheet)  {
+    float: right !important;
+}
+
+.video, #images li {
+	padding-bottom: 10px;
+}
+
+hr {
+	clear: inherit;
+}
+
+footer {
+	padding-bottom: 30px;
+}
 
 /* #Media Queries
 ================================================== */

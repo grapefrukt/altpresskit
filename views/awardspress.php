@@ -1,5 +1,5 @@
 <?php if(isset($data->awards)): ?>
-<div id="awards" class="sixteen columns">
+<div id="awards" class="twelve columns">
 	<h2>Awards &amp; Recognition</h2>
 	<ul>
 	<?php foreach($data->awards as $award): ?>
@@ -10,12 +10,12 @@
 	</ul>
 </div>
 
-<hr class="sixteen columns" />
+<hr class="twelve columns" />
 
 <?php endif; ?>
 
 <?php if(isset($data->awards)): ?>
-<div id="articles" class="sixteen columns">
+<div id="articles" class="twelve columns">
 	<h2>Selected Articles</h2>
 	<ul>
 	<?php foreach($data->quotes as $quote): ?>
@@ -29,6 +29,6 @@
 	</ul>
 </div>
 
-<hr class="sixteen columns" />
+<hr class="twelve columns" />
 
 <?php endif; ?>

@@ -1,4 +1,5 @@
-<div id="team" class="eight columns">
+<footer class="twelve columns">
+<div id="credits" class="six columns alpha">
 	<h2>Team & Repeating Collaborators</h2>
 	<dl>
 	<?php 
@@ -13,7 +14,7 @@
 	</dl>
 </div>
 
-<div id="contact" class="eight columns">
+<div id="contact" class="six columns omega">
 	<h2>Contact</h2>
 	<dl>
 	<?php 
@@ -28,3 +29,4 @@
 	} ?>
 	</dl>
 </div>
+</footer>
