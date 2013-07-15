@@ -21,7 +21,7 @@
 	<?php foreach($data->quotes as $quote): ?>
 		<li>
 			<blockquote cite="<?php echo $quote['link']; ?>">
-				<?php echo $quote['description']; ?>
+				<span><?php echo $quote['description']; ?></span>
 				<footer><?php echo $quote['name']; ?>, <a href="<?php echo $quote['link']; ?>"><?php echo $quote['website']; ?></a></footer>
 			</blockquote>
 		</li>
