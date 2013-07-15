@@ -21,8 +21,10 @@
 		videolink('mov', ViewHelper::icon('download'), $trailer, &$links);
 		videolink('mp4', ViewHelper::icon('download'), $trailer, &$links);
 
-		$class = 'alpha';
-		if ($count % 2 == 1) $class = 'omega';
+		$isodd = sizeof($trailers) % 2 == 1;
+		$class = 'six columns '. ViewHelper::alphaomega($count, $isodd);
+
+		if ($count == 0 && $isodd) $class = 'twelve columns alpha omega';
 		?>
 
 		<div class="video six columns <?php echo $class; ?>">

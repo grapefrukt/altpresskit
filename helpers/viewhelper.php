@@ -25,6 +25,11 @@ class ViewHelper {
 	public static function icon($name){
 		return '<i class="icon-' . $name . ' icon-large"></i>';
 	}
+
+	public static function alphaomega($count, $offset = 0){
+		if($offset) $count++;
+		return $count % 2 == 0 ? 'alpha' : 'omega';
+	}
 }
 
 ?>

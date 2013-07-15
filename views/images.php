@@ -7,13 +7,22 @@
 	<ul>
 	<?php 
 	$count = 0;
-	foreach($images as $image) { 
-		$class = '';
-		if($count % 2 == 0) $class = 'alpha';
-		if($count % 2 == 1) $class = 'omega'; ?>
-		<li class="six columns <?php echo $class; ?>">
-			<a class="widescreen" href="<?php echo $image; ?>" style="background-image: url(<?php echo $image; ?>);" ></a>
-		</li>
+	$isodd = sizeof($images) % 2 == 1;
+	foreach($images as $image) {
+		$class = 'six columns ';
+
+		// if there's an odd number of images, display the first one big 
+		if ($count == 0 && $isodd) {
+			$class = 'twelve columns alpha omega';
+
+		// if not, just alternate between alpha and omega
+		} else {
+			$class .= ViewHelper::alphaomega($count, $isodd);
+		}
+		?>
+			<li class="<?php echo $class; ?>">
+				<a class="widescreen" href="<?php echo $image; ?>" style="background-image: url(<?php echo $image; ?>);" ></a>
+			</li>
 		<?php 
 		$count++;
 	};
