@@ -21,11 +21,6 @@
 	width: 100%;
 }
 
-#images li {
-	height: 100px;
-	overflow: hidden;
-}
-
 .widescreen {
 	padding-bottom: 56%;
 	height: 0;

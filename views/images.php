@@ -9,10 +9,10 @@
 	$count = 0;
 	foreach($images as $image) { 
 		$class = '';
-		if($count % 4 == 0) $class = 'alpha';
-		if($count % 4 == 3) $class = 'omega'; ?>
-		<li class="three columns <?php echo $class; ?>">
-			<a href="<?php echo $image; ?>" style="background-image: url(<?php echo $image; ?>);" ></a>
+		if($count % 2 == 0) $class = 'alpha';
+		if($count % 2 == 1) $class = 'omega'; ?>
+		<li class="six columns <?php echo $class; ?>">
+			<a class="widescreen" href="<?php echo $image; ?>" style="background-image: url(<?php echo $image; ?>);" ></a>
 		</li>
 		<?php 
 		$count++;
