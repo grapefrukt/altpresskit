@@ -23,10 +23,6 @@
 	<link rel="stylesheet" href="stylesheets/layout.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
 
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
 	<!-- Favicons
 	================================================== -->
 	<link rel="shortcut icon" href="skeleton/images/favicon.ico">
@@ -50,18 +46,7 @@
 
 		<div id="menu" class="four columns">
 			<ul>
-				<li><a href="#factsheet">Factsheet</a></li>
-				<li><a href="#description">Description</a></li>
-				<li><a href="#history">History</a></li>
-				<li><a href="#features">Features</a></li>
-				<li><a href="#trailers">Videos</a></li>
-				<li><a href="#screenshots">Screenshots</a></li>
-				<li><a href="#logo">Logo &amp; Icon</a></li>
-				<li><a href="#awards">Awards &amp; Recognition</a></li>
-				<li><a href="#quotes">Selected Articles</a></li>
-				<li><a href="#about">About</a></li>
-				<li><a href="#credits">Credits</a></li>
-				<li><a href="#contact">Contact</a></li>
+
 			</ul>
 		</div>
 
@@ -70,8 +55,10 @@
 		<?php echo $content; ?>
 	</div><!-- container -->
 
-
-<!-- End Document
-================================================== -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="js/presskit.js" type="text/javascript"></script>	
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
 </body>
 </html>
