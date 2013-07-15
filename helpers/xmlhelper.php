@@ -7,10 +7,10 @@ class XMLHelper {
 		$xml = simplexml_load_file($xmlpath, 'SimpleXMLElement', LIBXML_NOCDATA);
 
 		foreach (libxml_get_errors() as $error) {
-			echo '<p>XML Error on line ', $error->line, ' column ', $error->column, ': ', $error->message, '</p>';
+			ErrorHelper::logError('XML Error on line ' . $error->line . ' column ' . $error->column . ': ' . $error->message);
 		}
 		
-		if(!$xml) die();
+		if(!$xml) return null;
 
 		$data = XMLHelper::xml2array($xml);
 

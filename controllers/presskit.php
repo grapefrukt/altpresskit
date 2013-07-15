@@ -21,7 +21,12 @@ class PresskitController extends Controller {
 	}
 
 	public function game($directory){
+		if(!isset($this->developer->games[$directory])){
+			ErrorHelper::logError('Could not find game data in directory');
+		}
+
 		$game = $this->developer->games[$directory];
+
 		ViewHelper::render('gamefacts', array('data' => $game, 'developer' => $this->developer));
 		ViewHelper::render('historydescription', array('data' => $game));
 		ViewHelper::render('images', array('images' => $game->images, 'logo' => $game->logo, 'zip' => $game->imageZip));

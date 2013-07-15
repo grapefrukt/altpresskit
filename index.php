@@ -6,12 +6,13 @@ require 'config.php';
 require 'router/Router.php';
 require 'router/Route.php';
 require 'controllers/presskit.php';
+require 'helpers/errorhelper.php';
 
 $router = new Router();
 
 $router->setBasePath(BASE_PATH);
 
-$router->map(':id', array('controller' => 'PresskitController', 'action' => 'game'));
+$router->map('/:id', array('controller' => 'PresskitController', 'action' => 'game'));
 $router->map('/', array('controller' => 'PresskitController', 'action' => 'index'));
 
 $route = $router->matchCurrentRequest();
@@ -25,7 +26,7 @@ if($route) {
 	call_user_func_array(array($controller, $target['action']), $route->getParameters());
 
 } else { 
-	echo '<pre>No route matched.</pre>';
+	ErrorHelper::logError('No route matched');
 } 
 
 $content = ob_get_contents();
