@@ -25,4 +25,5 @@ $(document).ready(function(){
 
 	$.event.add(window, "scroll", updateMenu);
 	$.event.add(window, "resize", updateMenu);
+	updateMenu();
 });
