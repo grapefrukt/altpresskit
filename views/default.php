@@ -44,10 +44,12 @@
 			echo '</ul>';
 		} ?>
 
-		<div id="menu" class="four columns">
-			<ul>
+		<header>
+			<h1 class="sixteen columns"><?php echo ViewHelper::$header; ?></h1>
+		</header>
 
-			</ul>
+		<div id="menu" class="four columns">
+			<!-- this menu is populated by js -->
 		</div>
 
 		<div id="dummy-menu" class="four columns">&nbsp;</div>

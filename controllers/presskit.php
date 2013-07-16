@@ -12,6 +12,8 @@ class PresskitController extends Controller {
 	}
 
 	public function index(){
+		ViewHelper::$title = 'presskit for ' . $this->developer->title;
+		ViewHelper::$header = $this->developer->title;
 		ViewHelper::render('devfacts', array('data' => $this->developer));
 		ViewHelper::render('historydescription', array('data' => $this->developer));
 		ViewHelper::render('images', array('data' => $this->developer));
@@ -27,6 +29,8 @@ class PresskitController extends Controller {
 
 		$game = $this->developer->games[$directory];
 
+		ViewHelper::$title = 'presskit for ' . $game->title . ' by ' . $this->developer->title;
+		ViewHelper::$header = $game->title;
 		ViewHelper::render('gamefacts', array('data' => $game, 'developer' => $this->developer));
 		ViewHelper::render('historydescription', array('data' => $game));
 		ViewHelper::render('images', array('data' => $game));
