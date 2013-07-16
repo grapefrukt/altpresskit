@@ -76,6 +76,11 @@ dt {
 
 #menu {
 	position: fixed;
+	padding-top: 15px;
+}
+
+#menu ul {
+	margin: 0;
 }
 
 #menu li {
@@ -86,7 +91,16 @@ dt {
 	display: block;
 	padding: 10px;
 	margin: 0;
-	background: lightgrey;
+	background: rgb(32, 127, 146);
+	text-decoration: none;
+	color: #fff;
+	font-weight: bold;
+	border-left: 15px solid rgba(0, 0, 0, 0.2);
+	transition: background .2s ease-in;
+}
+
+#menu li a:hover {
+	background: rgb(85, 136, 146);
 }
 
 .container > *:not(#dummy-menu):not(#factsheet) {
