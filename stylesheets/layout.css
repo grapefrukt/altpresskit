@@ -17,6 +17,24 @@
 /* #Site Styles
 ================================================== */
 
+#games li a {
+	height: 100px;
+	background-size: cover;
+	text-decoration: none;
+	display: block;
+	line-height: 234px;
+	border-bottom: 35px solid rgb(32, 127, 146);
+	font-weight: bold;
+	text-indent: 15px;
+	color: white;
+	transition: border-bottom-color .2s ease-in;
+	margin-bottom: 15px;
+}
+
+#games li a:hover {
+	border-bottom-color: rgb(0, 152, 182);
+}
+
 #images img {
 	width: 100%;
 }
@@ -100,10 +118,10 @@ dt {
 }
 
 #menu li a:hover {
-	background: rgb(85, 136, 146);
+	background: rgb(0, 152, 182);
 }
 
-.container > *:not(#dummy-menu):not(#factsheet) {
+.container > *:not(#dummy-menu):not(#factsheet):not(#historydescription) {
     float: right !important;
 }
 
@@ -128,7 +146,7 @@ blockquote span {
 	padding: 9px 19px 10px 20px;
 	border-left: 1px solid #ddd;
 	display: block;
-	background-color: black;
+	background-color: rgb(32, 127, 146);
 	color: white;
 }
 
@@ -136,7 +154,7 @@ blockquote span:after {
 	content: "\0020";
 	display: block;
 	border: 10px inset transparent;
-	border-top: 10px inset black;
+	border-top: 10px solid rgb(32, 127, 146);
 	float: right;
 	position: absolute;
 	right: 100px;

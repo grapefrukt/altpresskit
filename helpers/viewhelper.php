@@ -10,9 +10,9 @@ class ViewHelper {
 		include 'views/' . $name . '.php';
 	}
 
-	public static function link($url, $text = ''){
+	public static function link($url, $text = '', $extra = ''){
 		if ($text == '') $text = $url;
-		return '<a href="' . $url . '">' . $text . '</a>';
+		return '<a href="' . $url . '" ' . $extra . '>' . $text . '</a>';
 	}
 
 	public static function email($email, $text = ''){

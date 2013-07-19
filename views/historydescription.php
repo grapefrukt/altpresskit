@@ -1,4 +1,4 @@
-<div class="eight columns alpha omega">
+<div id="historydescription" class="eight columns alpha omega">
 	<div id="description" class="eight columns">
 		<h2>Description</h2>
 		<p><?php echo $data->description; ?></p>
@@ -27,15 +27,20 @@
 		</div>
 	<?php endif; ?>
 
-	<?php if(isset($data->games)): ?>
+	<?php 
+	$count = 0;
+	if(isset($data->games)): ?>
 		<div id="games" class="eight columns">
 			<h2>Projects</h2>
-			<ul class="square">
-			<?php foreach($data->games as $game){
-				echo '<li>', ViewHelper::link($game->directory, $game->title), '</li>';
-			} ?>
+			<ul>
+			<?php foreach($data->games as $game): ?>
+				<li >
+					<?php echo ViewHelper::link($game->directory, $game->title, 'class="four columns ' . ViewHelper::alphaomega($count++) . '" style="background-image: url(' . reset($game->images) . ');"'); ?>
+				</li>
+			<?php endforeach; ?>
 			</ul>
 		</div>
 	<?php endif; ?>
+
 </div>
 <hr class="twelve columns" />
