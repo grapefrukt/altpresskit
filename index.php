@@ -3,31 +3,30 @@ ini_set('display_errors','On');
 error_reporting(-1);
 
 require 'config.php';
-require 'router/Router.php';
-require 'router/Route.php';
 require 'controllers/presskit.php';
 require 'helpers/errorhelper.php';
 
-$router = new Router();
+$requestUrl = $_SERVER['REQUEST_URI'];
 
-$router->setBasePath(BASE_PATH);
+// strip GET variables from URL
+if(($pos = strpos($requestUrl, '?')) !== false) {
+	$requestUrl =  substr($requestUrl, 0, $pos);
+}
 
-$router->map('/:id', array('controller' => 'PresskitController', 'action' => 'game'));
-$router->map('/', array('controller' => 'PresskitController', 'action' => 'index'));
+// strip out the base path
+$requestUrl = str_replace(BASE_PATH, '', $requestUrl);
 
-$route = $router->matchCurrentRequest();
+// strip any leading/trailing slashes
+$requestUrl = trim($requestUrl, '/');
 
 ob_start();
 
-if($route) { 
-	$target = $route->getTarget();
-	$controller = new $target["controller"]();
-	
-	call_user_func_array(array($controller, $target['action']), $route->getParameters());
-
-} else { 
-	ErrorHelper::logError('No route matched');
-} 
+$presskit = new PresskitController();
+if($requestUrl == ''){
+	$presskit->index();
+} else {
+	$presskit->game($requestUrl);
+}
 
 $content = ob_get_contents();
 ob_end_clean();
