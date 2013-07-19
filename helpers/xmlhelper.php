@@ -32,7 +32,7 @@ class XMLHelper {
 		return $data;
 	}
 
-	private static function collapse($data, $plural, $singular){
+	public static function collapse($data, $plural, $singular){
 		if(!isset($data[$plural])) return;
 		if(!isset($data[$plural][$singular])) return;
 		$data[$plural] = $data[$plural][$singular];
@@ -48,7 +48,7 @@ class XMLHelper {
 		return (bool)count(array_filter(array_keys($array), 'is_string'));
 	}
 
-	private static function xml2array ( $xmlObject, $out = array ()) {
+	public static function xml2array ( $xmlObject, $out = array ()) {
 		foreach ( (array) $xmlObject as $index => $node ){
 			$index = XMLHelper::dashesToCamelCase($index);
 			$out[$index] = ( is_object ( $node ) ||  is_array ( $node ) ) ? XMLHelper::xml2array ( $node ) : trim($node);

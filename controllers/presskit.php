@@ -2,6 +2,7 @@
 require 'controller.php';
 require 'models/developer.php';
 require 'models/game.php';
+require 'helpers/promoterhelper.php';
 
 class PresskitController extends Controller {
 
@@ -28,6 +29,10 @@ class PresskitController extends Controller {
 		}
 
 		$game = $this->developer->games[$directory];
+		
+		if(isset($game->promoter['product'])) {
+			PromoterHelper::getData($game);
+		}
 
 		ViewHelper::$title = 'presskit for ' . $game->title . ' by ' . $this->developer->title;
 		ViewHelper::$header = $game->title;
