@@ -7,7 +7,7 @@ class PromoterHelper {
 		$promoterxml = simplexml_load_string($data);
 
 		$promoter = XMLHelper::xml2array($promoterxml);
-		XMLHelper::collapse(&$promoter, 'reviews', 'review');
+		XMLHelper::collapse($promoter, 'reviews', 'review');
 
 		if (PROMOTER_OVERWRITE || !isset($game->quotes)) $game->quotes = array();
 

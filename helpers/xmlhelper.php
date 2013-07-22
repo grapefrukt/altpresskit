@@ -14,20 +14,20 @@ class XMLHelper {
 
 		$data = XMLHelper::xml2array($xml);
 
-		XMLHelper::collapse(&$data, 'socials', 'social');
-		XMLHelper::collapse(&$data, 'histories', 'history');
-		XMLHelper::collapse(&$data, 'trailers', 'trailer');
-		XMLHelper::collapse(&$data, 'awards', 'award');
-		XMLHelper::collapse(&$data, 'quotes', 'quote');
-		XMLHelper::collapse(&$data, 'additionals', 'additional');
-		XMLHelper::collapse(&$data, 'credits', 'credit');
-		XMLHelper::collapse(&$data, 'contacts', 'contact');
+		XMLHelper::collapse($data, 'socials', 'social');
+		XMLHelper::collapse($data, 'histories', 'history');
+		XMLHelper::collapse($data, 'trailers', 'trailer');
+		XMLHelper::collapse($data, 'awards', 'award');
+		XMLHelper::collapse($data, 'quotes', 'quote');
+		XMLHelper::collapse($data, 'additionals', 'additional');
+		XMLHelper::collapse($data, 'credits', 'credit');
+		XMLHelper::collapse($data, 'contacts', 'contact');
 
-		XMLHelper::collapse(&$data, 'platforms', 'platform');
-		XMLHelper::collapse(&$data, 'prices', 'price');
-		XMLHelper::collapse(&$data, 'features', 'feature');
-		XMLHelper::collapse(&$data, 'awards', 'award');
-		XMLHelper::collapse(&$data, 'quotes', 'quote');
+		XMLHelper::collapse($data, 'platforms', 'platform');
+		XMLHelper::collapse($data, 'prices', 'price');
+		XMLHelper::collapse($data, 'features', 'feature');
+		XMLHelper::collapse($data, 'awards', 'award');
+		XMLHelper::collapse($data, 'quotes', 'quote');
 
 		return $data;
 	}
