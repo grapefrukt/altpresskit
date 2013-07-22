@@ -16,10 +16,10 @@
 	$count = 0;
 	foreach($trailers as $trailer){
 		$links = array();
-		videolink('youtube', ViewHelper::icon('youtube-play'), $trailer, &$links);
-		videolink('vimeo', ViewHelper::icon('play-sign'), $trailer, &$links);
-		videolink('mov', ViewHelper::icon('download'), $trailer, &$links);
-		videolink('mp4', ViewHelper::icon('download'), $trailer, &$links);
+		videolink('youtube', ViewHelper::icon('youtube-play'), $trailer, $links);
+		videolink('vimeo', ViewHelper::icon('play-sign'), $trailer, $links);
+		videolink('mov', ViewHelper::icon('download'), $trailer, $links);
+		videolink('mp4', ViewHelper::icon('download'), $trailer, $links);
 
 		$isodd = sizeof($trailers) % 2 == 1;
 		$class = 'six columns '. ViewHelper::alphaomega($count, $isodd);
