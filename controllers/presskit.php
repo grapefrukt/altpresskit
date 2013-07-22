@@ -25,7 +25,7 @@ class PresskitController extends Controller {
 
 	public function game($directory){
 		if(!isset($this->developer->games[$directory])){
-			ErrorHelper::logError('Could not find game data in directory');
+			ErrorHelper::logError('Could not find game data in directory or incorrect BASE_PATH set in config.php');
 		}
 
 		$game = $this->developer->games[$directory];

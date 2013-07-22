@@ -2,9 +2,15 @@
 ini_set('display_errors','On');
 error_reporting(-1);
 
-require 'config.php';
 require 'controllers/presskit.php';
 require 'helpers/errorhelper.php';
+
+if (!file_exists('config.php' )) {
+	ErrorHelper::logError('Missing config.php, make a copy of config-sample.php to get started.');
+	require 'config-sample.php';
+} else {
+	require 'config.php';
+}
 
 $requestUrl = $_SERVER['REQUEST_URI'];
 
@@ -21,11 +27,16 @@ $requestUrl = trim($requestUrl, '/');
 
 ob_start();
 
-$presskit = new PresskitController();
-if($requestUrl == ''){
-	$presskit->index();
-} else {
-	$presskit->game($requestUrl);
+if(!ErrorHelper::hasErrors()){
+	$presskit = new PresskitController();
+}
+
+if(!ErrorHelper::hasErrors()){
+	if($requestUrl == ''){
+		$presskit->index();
+	} else {
+		$presskit->game($requestUrl);
+	}
 }
 
 $content = ob_get_contents();

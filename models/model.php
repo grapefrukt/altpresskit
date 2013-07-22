@@ -4,7 +4,7 @@ require 'helpers/filehelper.php';
 
 class Model {
 	
-	private $data = array();
+	protected $data;
 
 	public $images = array();	
 	public $logo;
