@@ -10,7 +10,10 @@ class Developer extends Model {
 	public function __construct() {
 		parent::__construct('', XMLHelper::parse('data/data.xml'));
 
-		if ($this->data == null) ErrorHelper::logError('Failed to load developer data');
+		if ($this->data == null){
+			ErrorHelper::logError('Failed to load developer data');	
+			return;
+		} 
 
 		$gamedirs = FileHelper::getGames('data');
 		foreach($gamedirs as $gamedir){
