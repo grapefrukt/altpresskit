@@ -23,11 +23,17 @@
 		<dd><?php echo ViewHelper::link($data->website); ?></dd>
 	</dl>
 
-	<p><em>Regular Price:</em></p>
-	<?php foreach($data->prices as $price): ?>
-		<dl class="prices">
-			<dt><?php echo $price['currency']; ?></dt>
-			<dd><?php echo $price['value']; ?></dd>
-		</dl>
-	<?php endforeach; ?>
+	<?php if($data->prices != null) : ?>
+	<table class="prices">
+		<caption>Regular Price:</caption>
+		<?php foreach($data->prices as $price): 
+		var_dump($price);
+		?>
+			<tr>
+				<td><?php echo $price['currency']; ?></td>
+				<td><?php echo $price['value']; ?></td>
+			</tr>
+		<?php endforeach; ?>
+	</table>
+	<?php endif; ?>
 </div>
