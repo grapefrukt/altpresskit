@@ -39,11 +39,6 @@
 	width: 100%;
 }
 
-.widescreen {
-	padding-bottom: 56%;
-	height: 0;
-	clear: right;
-}
 
 .video p {
 	white-space: nowrap;

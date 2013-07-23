@@ -27,6 +27,15 @@ $(document).ready(function(){
 	$.event.add(window, 'resize', updateMenu);
 	updateMenu();
 
+	// resizes videos/images to stay in widescreen aspect ratio
+	var updateVideoSize = function(){
+		$('.widescreen').each(function() {
+			$(this).css('height', $(this).width() * .5625);
+		});
+	}
+
+	$.event.add(window, 'resize', updateVideoSize);
+	updateVideoSize();
 
 	// inline form code from: http://zurb.com/playground/inline-form-labels
 	$('label + input[type="text"]').each(function (type) {
