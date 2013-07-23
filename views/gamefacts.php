@@ -26,9 +26,7 @@
 	<?php if($data->prices != null) : ?>
 	<table class="prices">
 		<caption>Regular Price:</caption>
-		<?php foreach($data->prices as $price): 
-		var_dump($price);
-		?>
+		<?php foreach($data->prices as $price): ?>
 			<tr>
 				<td><?php echo $price['currency']; ?></td>
 				<td><?php echo $price['value']; ?></td>
