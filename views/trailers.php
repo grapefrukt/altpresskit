@@ -1,5 +1,5 @@
 <?php 
-	function videolink($key, $label, $data, $list){
+	function videolink($key, $label, $data, &$list){
 		if (!isset($data[$key])) return;
 		if($key == 'youtube'){
 			$list[] = ViewHelper::link('http://youtu.be/' . $data[$key], $label);
