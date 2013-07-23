@@ -41,6 +41,7 @@ class PresskitController extends Controller {
 		ViewHelper::render('images', array('data' => $game));
 		ViewHelper::render('trailers', array('trailers' => $game->trailers));
 		ViewHelper::render('awardspress', array('data' => $game));
+		ViewHelper::render('presscopy', array('data' => $game));
 		ViewHelper::render('teamcontact', array('data' => $game, 'developer' => $this->developer));
 	}
 }

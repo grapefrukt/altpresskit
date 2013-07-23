@@ -201,6 +201,49 @@ footer {
 	color: white;
 }
 
+/* forms */
+
+fieldset {
+	padding-top: 6px;
+	margin-bottom: 0;
+}
+
+input[type="text"] {
+	position: relative;
+	z-index: 2;
+	text-indent: 10px;
+	width: 100%;
+	padding: 7px 0;
+}
+ 
+label {
+	position: relative;
+	z-index: 10;
+	padding: 0 10px;
+	opacity: 0.75;
+	transition: opacity 0.15s linear;
+	width: 100%;
+	cursor: text;
+}
+
+label + input[type="text"] {
+	margin-top: -27px;
+}
+
+button {
+	margin-top: 0;
+}
+
+label.focus { 
+	opacity: 0.35; 
+}
+
+label.has-text { 
+	opacity: 0.0; 
+	transition-duration: 0s;
+	visibility: hidden; 
+}
+
 /* #Media Queries
 ================================================== */
 

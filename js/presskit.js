@@ -23,7 +23,26 @@ $(document).ready(function(){
 		}
 	};
 
-	$.event.add(window, "scroll", updateMenu);
-	$.event.add(window, "resize", updateMenu);
+	$.event.add(window, 'scroll', updateMenu);
+	$.event.add(window, 'resize', updateMenu);
 	updateMenu();
+
+
+	// inline form code from: http://zurb.com/playground/inline-form-labels
+	$('label + input[type="text"]').each(function (type) {
+
+		$(this).focus(function () {
+			$(this).prev('label').addClass('focus');
+		});
+		 
+		$(this).keypress(function () {
+			$(this).prev('label').addClass('has-text').removeClass('focus');
+		});
+		 
+		$(this).blur(function () {
+			if($(this).val() == '') {
+				$(this).prev('label').removeClass('has-text').removeClass('focus');
+			}
+		});
+	});
 });
