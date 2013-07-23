@@ -9,6 +9,7 @@ class Developer extends Model {
 
 	public function __construct() {
 		parent::__construct('', XMLHelper::parse('data/data.xml'));
+		$this->isDeveloper = true;
 
 		if ($this->data == null){
 			ErrorHelper::logError('Failed to load developer data');	

@@ -6,6 +6,8 @@ class Model {
 	
 	protected $data;
 
+	public $isDeveloper = false;
+
 	public $images = array();	
 	public $logo;
 

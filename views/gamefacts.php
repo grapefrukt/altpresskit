@@ -5,7 +5,11 @@
 		<dd><?php echo $developer->title; ?></dd>
 		<dd>Based in: <?php echo $developer->basedIn; ?></dd>
 
-		<dt>Release date:</dt>
+		<?php if($data->isDeveloper) : ?>
+			<dt>Founding date:</dt>
+		<?php else : ?>
+			<dt>Release date:</dt>
+		<?php endif; ?>
 		<dd><?php echo $data->releaseDate; ?></dd>
 
 		<dt>Platforms:</dt>
