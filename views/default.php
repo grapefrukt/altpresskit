@@ -26,9 +26,6 @@
 	<!-- Favicons
 	================================================== -->
 	<link rel="shortcut icon" href="skeleton/images/favicon.ico">
-	<link rel="apple-touch-icon" href="skeleton/images/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="skeleton/images/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="skeleton/images/apple-touch-icon-114x114.png">
 
 </head>
 <body>
