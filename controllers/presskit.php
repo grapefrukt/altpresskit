@@ -45,5 +45,12 @@ class PresskitController extends Controller {
 		ViewHelper::render('about', array('data' => $this->developer));
 		ViewHelper::render('teamcontact', array('data' => $game, 'developer' => $this->developer));
 	}
+
+	public function email($directory){
+		ViewHelper::$template = 'ajax';
+		$game = $this->developer->games[$directory];
+		echo 'Hello';
+
+	}
 }
 ?>

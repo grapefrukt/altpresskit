@@ -239,6 +239,32 @@ label.has-text {
 	visibility: hidden; 
 }
 
+button[disabled] {
+	border-color: #ccc;
+	text-shadow: none;
+	color: #777;
+	cursor: default;
+	transition-duration: .3s;
+}
+
+button[disabled]:hover {
+	background: #eee; /* Old browsers */
+	background: #eee -moz-linear-gradient(top, rgba(255,255,255,.2) 0%, rgba(0,0,0,.2) 100%); /* FF3.6+ */
+	background: #eee -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.2)), color-stop(100%,rgba(0,0,0,.2))); /* Chrome,Safari4+ */
+	background: #eee -webkit-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* Chrome10+,Safari5.1+ */
+	background: #eee -o-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* Opera11.10+ */
+	background: #eee -ms-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* IE10+ */
+	background: #eee linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(0,0,0,.2) 100%); /* W3C */
+	transition-duration: 1s;
+}
+
+.success {
+	background: rgb(114, 182, 41);
+	color: white !important;
+	text-shadow: none;
+	transition-duration: 1s;
+}
+
 /* #Media Queries
 ================================================== */
 

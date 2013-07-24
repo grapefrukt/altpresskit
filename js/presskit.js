@@ -38,7 +38,7 @@ $(document).ready(function(){
 	updateVideoSize();
 
 	// inline form code from: http://zurb.com/playground/inline-form-labels
-	$('label + input[type="text"]').each(function (type) {
+	$('label + input[type="text"]').each(function(type) {
 
 		$(this).focus(function () {
 			$(this).prev('label').addClass('focus');
@@ -53,5 +53,51 @@ $(document).ready(function(){
 				$(this).prev('label').removeClass('has-text').removeClass('focus');
 			}
 		});
+	});
+
+	var validateForm = function(){
+		$('#presscopy button').prop('disabled', $('#email').val() == '');
+	}
+	validateForm();
+
+	$('#presscopy input[type="text"]').keyup(validateForm);
+	$('#presscopy input[type="text"]').change(validateForm);
+
+	$('#presscopy form').submit(function(event) {
+		var data = $(this).serialize();
+		var button = $('#presscopy button');
+
+		$('#presscopy input[type="text"]').each(function(){
+			$(this).animate({ opacity : .7 }, { duration : 1000 });
+			$(this).prop("disabled", true);
+		});
+
+		button.prop('disabled', true);
+		button.html('<i class="icon-spinner icon-spin icon-large"></i>');
+
+		var postData = function(){
+			$.post('', data, function(result){
+				$('#presscopy .status').text('Completed!');
+				$('#presscopy form')[0].reset();
+				
+				$('#presscopy input[type="text"]').each(function(){
+					$(this).animate({ opacity : 1 }, { duration : 1000 });
+					$(this).prop("disabled", false);
+					$(this).blur();
+				});
+
+				button.html('<i class="icon-ok-circle"></i> Success!');
+				button.toggleClass('success', true);
+				setTimeout(function(){
+					button.html('Request');
+					button.toggleClass('success', false);
+					validateForm();
+				}, 2000);
+
+			});
+		}
+		$('#presscopy input[type="text"]').last().queue(postData);
+
+		return false; // avoid to execute the actual submit of the form.
 	});
 });

@@ -4,6 +4,7 @@ class ViewHelper {
 
 	public static $title = 'presskit();';
 	public static $header = 'presskit();';
+	public static $template = 'default';
 
 	public static function render($name, $vars){
 		extract($vars);

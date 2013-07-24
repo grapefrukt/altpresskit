@@ -2,15 +2,15 @@
 
 <div id="presscopy" class="twelve columns">
 	<h2>Request press copy</h2>
-	<form>
+	<form action="." >
 		<fieldset class="five columns alpha">
 			<label for="email">E-mail</label>
-			<input type="text" id="email" />
+			<input type="text" id="email" name="email" />
 		</fieldset>
 
 		<fieldset class="five columns">
 			<label for="publication">Publication</label>
-			<input type="text" id="publication" />
+			<input type="text" id="publication" name="publication" />
 		</fieldset>
 
 		<button class="two columns omega" type="submit">Request</button>

@@ -32,7 +32,9 @@ if(!ErrorHelper::hasErrors()){
 }
 
 if(!ErrorHelper::hasErrors()){
-	if($requestUrl == ''){
+	if(isset($_POST['email'])){
+		$presskit->email($requestUrl);
+	} else if($requestUrl == ''){
 		$presskit->index();
 	} else {
 		$presskit->game($requestUrl);
@@ -42,5 +44,5 @@ if(!ErrorHelper::hasErrors()){
 $content = ob_get_contents();
 ob_end_clean();
 
-require 'views/default.php';
+require 'views/' . ViewHelper::$template . '.php';
 ?>
