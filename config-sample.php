@@ -19,4 +19,19 @@ define('PROMOTER_OVERWRITE', true);
 */
 define('PROMOTER_CACHE_DURATION', 3600);
 
+/**
+* E-mail settings
+* Send to: The email that will receive the press request (Required)
+* SMTP server adress, leave blank to use PHPs standard email() 
+* SMTP username, only required if using SMTP
+* SMTP password, only required if using SMTP
+* SMTP encrytion, only required if using SMTP, set to ssl or tls. set to blank to not use encrytion.
+*/
+define('EMAIL_SEND_TO', '');
+
+define('EMAIL_SMTP_SERVER', '');
+define('EMAIL_SMTP_USER', '');
+define('EMAIL_SMTP_PASS', '');
+define('EMAIL_ENCRYPTION', 'ssl');
+
 ?>
