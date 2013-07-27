@@ -190,7 +190,7 @@ footer {
 	padding-bottom: 30px;
 }
 
-#errors li {
+.errors li {
 	background-color: hsl(0, 64%, 35%);
 	padding: 10px 15px;
 	color: white;
@@ -260,6 +260,13 @@ button[disabled]:hover {
 
 .success {
 	background: rgb(114, 182, 41);
+	color: white !important;
+	text-shadow: none;
+	transition-duration: 1s;
+}
+
+.fail {
+	background: hsl(0, 64%, 35%);
 	color: white !important;
 	text-shadow: none;
 	transition-duration: 1s;

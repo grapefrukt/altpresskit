@@ -33,7 +33,7 @@
 	================================================== -->
 	<div class="container">
 		<?php if(sizeof(ErrorHelper::$errors)){
-			echo '<ul id="errors" class="sixteen columns">';
+			echo '<ul class="errors sixteen columns">';
 			foreach(ErrorHelper::$errors as $error){
 				echo '<li>', $error, '</li>';
 			}

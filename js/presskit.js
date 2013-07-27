@@ -79,24 +79,34 @@ $(document).ready(function(){
 			$.post('', data, function(result){
 				$('#presscopy .status').text('Completed!');
 				$('#presscopy form')[0].reset();
-				
+
 				$('#presscopy input[type="text"]').each(function(){
 					$(this).animate({ opacity : 1 }, { duration : 1000 });
 					$(this).prop("disabled", false);
 					$(this).blur();
 				});
 
-				button.html('<i class="icon-ok-circle"></i> Success!');
-				button.toggleClass('success', true);
+
+				if(result == 'OK') {
+					button.html('<i class="icon-ok-circle"></i> Success!');
+					button.toggleClass('success', true);
+				} else {
+					button.html('<i class="icon-warning-sign"></i> Failed!');
+					button.toggleClass('fail', true);
+					$('#presscopy form').after('<ul class="errors twelve columns alpha omega"><li>' + result + '</li></ul>')
+				}
+				
 				setTimeout(function(){
 					button.html('Request');
 					button.toggleClass('success', false);
+					button.toggleClass('fail', false);
 					validateForm();
 				}, 2000);
 
 			});
 		}
-		$('#presscopy input[type="text"]').last().queue(postData);
+
+		setTimeout(postData, 1000);
 
 		return false; // avoid to execute the actual submit of the form.
 	});
