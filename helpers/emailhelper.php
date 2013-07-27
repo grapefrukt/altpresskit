@@ -21,6 +21,7 @@ class EmailHelper {
 
 		// set up sender and recipient
 		$mail->From = $fromAdress;
+		$mail->FromName = $fromAdress;
 		$mail->AddAddress($toAdress);
 
 		// set word wrap to 50 characters
