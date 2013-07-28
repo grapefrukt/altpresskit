@@ -1,4 +1,4 @@
-<div id="credits" class="sixteen columns">
+<div id="credits" class="twelve columns">
 	<p>
 		This presskit runs on <a href="https://github.com/grapefrukt/altpresskit">alt. presskit</a> 
 		by <a href="http://grapefrukt.com/">grapefrukt</a>
