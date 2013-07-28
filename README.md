@@ -24,3 +24,8 @@ http://altpresskit.grapefrukt.com/ runs on the latest checkout from github on th
 ## Who made this?
 
 * [Martin Jonasson](http://grapefrukt.com)
+
+## To Do
+* Google Analytics
+* Fix link parsing
+* Make updating/installing easier
