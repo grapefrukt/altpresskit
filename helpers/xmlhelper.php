@@ -26,8 +26,6 @@ class XMLHelper {
 		XMLHelper::collapse($data, 'platforms', 'platform');
 		XMLHelper::collapse($data, 'prices', 'price');
 		XMLHelper::collapse($data, 'features', 'feature');
-		XMLHelper::collapse($data, 'awards', 'award');
-		XMLHelper::collapse($data, 'quotes', 'quote');
 
 		return $data;
 	}
