@@ -45,7 +45,12 @@
 		</header>
 
 		<div id="menu" class="four columns">
-			<!-- this menu is populated by js -->
+			<ul>
+				<?php if (!ViewHelper::$isHome): ?>
+					<li><a href="/<?php echo BASE_PATH; ?>">Home</a></li>
+				<?php endif; ?>
+				<!-- the rest of this menu is populated by js -->
+			</ul>
 		</div>
 
 		<div id="dummy-menu" class="four columns">&nbsp;</div>

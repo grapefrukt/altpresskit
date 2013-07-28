@@ -1,12 +1,11 @@
 $(document).ready(function(){
 
 	// populates menu using all h2 tags present on page
-	var menu = '<ul>';
+	var menu = '';
 	$('h2').each(function() {
 		menu += '<li><a href="#' + $(this).parent().attr('id') + '">' + $(this).text() + '</a></li>'
 	});
-	menu += '</ul>';
-	$('#menu').html(menu);
+	$('#menu ul').append(menu);
 
 
 	// makes menu stick to top of screen

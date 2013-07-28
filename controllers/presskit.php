@@ -14,6 +14,7 @@ class PresskitController extends Controller {
 	}
 
 	public function index(){
+		ViewHelper::$isHome = true;
 		ViewHelper::$title = 'presskit for ' . $this->developer->title;
 		ViewHelper::$header = $this->developer->title;
 		ViewHelper::render('devfacts', array('data' => $this->developer));
