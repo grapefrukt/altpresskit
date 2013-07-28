@@ -6,7 +6,7 @@ class ViewHelper {
 	public static $header = 'presskit();';
 	public static $template = 'default';
 
-	public static function render($name, $vars){
+	public static function render($name, $vars = array()){
 		extract($vars);
 		include 'views/' . $name . '.php';
 	}
