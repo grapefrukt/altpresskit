@@ -14,7 +14,7 @@
 
 <?php endif; ?>
 
-<?php if(isset($data->awards)): ?>
+<?php if(isset($data->quotes)): ?>
 <div id="articles" class="twelve columns">
 	<h2>Selected Articles</h2>
 	<ul>
