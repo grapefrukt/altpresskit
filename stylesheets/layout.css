@@ -187,13 +187,27 @@ hr {
 }
 
 footer {
-	padding-bottom: 30px;
+	padding-bottom: 60px;
 }
 
 .errors li {
 	background-color: hsl(0, 64%, 35%);
 	padding: 10px 15px;
 	color: white;
+}
+
+#creditlink {
+	background: rgb(32, 127, 146) url('../images/logo.svg');
+	background-size: contain;
+	display: block;
+	width: 30px;
+	height: 30px;
+	right: 10px;
+	position: absolute;
+}
+
+#creditlink span {
+	display: none;
 }
 
 /* forms */

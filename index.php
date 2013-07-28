@@ -34,8 +34,10 @@ if(!ErrorHelper::hasErrors()){
 if(!ErrorHelper::hasErrors()){
 	if(isset($_POST['email'])){
 		$presskit->email($requestUrl);
-	} else if($requestUrl == ''){
+	} else if ($requestUrl == ''){
 		$presskit->index();
+	} else if ($requestUrl == 'credits'){
+		$presskit->credits();
 	} else {
 		$presskit->game($requestUrl);
 	}
