@@ -18,22 +18,26 @@ class FileHelper {
 		
 		closedir($handle);
 		
+		sort($dirs);
+		
 		return $dirs;
 	}
 
 	public static function getImages($path){
 		if (!($handle = @opendir($path))) return null;
 		
-		$dirs = array();
+		$images = array();
 
 		while (false !== ($entry = readdir($handle))) {
 			if (array_search($entry, FileHelper::$blacklist) !== false) continue;
-			$dirs[] = $path . '/' . $entry;
+			$images[] = $path . '/' . $entry;
 		}
 		
 		closedir($handle);
+
+		sort($images);
 		
-		return $dirs;
+		return $images;
 	}
 
 }
