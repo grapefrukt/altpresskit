@@ -4,6 +4,8 @@ class PromoterHelper {
 
 	public static function getData($game){
 		$data = PromoterHelper::simpleCachedCurl('http://promoterapp.com/dopresskit/' . $game->promoter['product'], PROMOTER_CACHE_DURATION);
+		if($data == null) return;
+
 		$promoterxml = simplexml_load_string($data);
 
 		$promoter = XMLHelper::xml2array($promoterxml);
@@ -40,6 +42,11 @@ class PromoterHelper {
 
 	*/
 	private static function simpleCachedCurl($url, $expires, $debug = false){
+		if (!function_exists('curl_version')){
+			ErrorHelper::logError("Could not fetch promoter data, cURL unavailable");
+			return null;
+		} 
+
 		if($debug){
 			echo "simpleCachedCurl debug:<br>";
 		}
