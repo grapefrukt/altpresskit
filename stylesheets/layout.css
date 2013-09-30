@@ -20,6 +20,7 @@
 #games li a {
 	height: 100px;
 	background-size: cover;
+	background-color: #f0f0f0;
 	text-decoration: none;
 	display: block;
 	line-height: 234px;
@@ -29,7 +30,6 @@
 	color: white;
 	transition: border-bottom-color .2s ease-in;
 	margin-bottom: 15px;
-	background: #f0f0f0;
 }
 
 #games li a:hover {
