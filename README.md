@@ -29,3 +29,7 @@ http://altpresskit.grapefrukt.com/ runs on the latest checkout from github on th
 * Google Analytics
 * Fix link parsing
 * Make updating/installing easier
+* Deal with missing data.xml, images folder and so on
+* Provide default templates for data.xml
+* Integrate skeleton (not as submodule)
+* Look into updating of installations via github
