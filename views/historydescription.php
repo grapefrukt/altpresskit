@@ -38,7 +38,7 @@
 					<?php
 						$image = '';
 						if ($game->images != null) $image = 'style="background-image: url(' . reset($game->images) . ');"';
-						echo ViewHelper::link($game->directory, $game->title, 'class="four columns ' . ViewHelper::alphaomega($count++) . '" ' . $image); 
+						echo ViewHelper::linkProject($game->directory, $game->title, 'class="four columns ' . ViewHelper::alphaomega($count++) . '" ' . $image); 
 					?>
 				</li>
 			<?php endforeach; ?>

@@ -6,6 +6,7 @@ class ViewHelper {
 	public static $header = 'presskit();';
 	public static $template = 'default';
 	public static $isHome = false;
+	public static $mod_rewrite = false;
 
 	public static function render($name, $vars = array()){
 		extract($vars);
@@ -14,6 +15,12 @@ class ViewHelper {
 
 	public static function link($url, $text = '', $extra = ''){
 		if ($text == '') $text = $url;
+		return '<a href="' . $url . '" ' . $extra . '>' . $text . '</a>';
+	}
+
+	public static function linkProject($url, $text = '', $extra = ''){
+		if ($text == '') $text = $url;
+		if (!ViewHelper::$mod_rewrite) $url = 'sheet.php?p=' . $url;
 		return '<a href="' . $url . '" ' . $extra . '>' . $text . '</a>';
 	}
 

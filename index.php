@@ -5,6 +5,8 @@ error_reporting(-1);
 require 'controllers/presskit.php';
 require 'helpers/errorhelper.php';
 
+ViewHelper::$mod_rewrite = getenv('HTTP_MOD_REWRITE') == 'On' ? true : false;
+
 if (!file_exists('config.php' )) {
 	ErrorHelper::logError('Missing config.php, make a copy of config-sample.php to get started.');
 	require 'config-sample.php';
@@ -14,16 +16,23 @@ if (!file_exists('config.php' )) {
 
 $requestUrl = $_SERVER['REQUEST_URI'];
 
-// strip GET variables from URL
-if(($pos = strpos($requestUrl, '?')) !== false) {
-	$requestUrl =  substr($requestUrl, 0, $pos);
+// support for presskit legacy urls, also used when mod_rewrite is unavailable
+if (isset($_GET['p']) && $_GET['p'] != ""){
+	$requestUrl = $_GET['p'];
+} else {
+	// strip GET variables from URL
+	if(($pos = strpos($requestUrl, '?')) !== false) {
+		$requestUrl =  substr($requestUrl, 0, $pos);
+	}
+
+	// strip out the base path
+	$requestUrl = str_replace(BASE_PATH, '', $requestUrl);
+
+	// strip any leading/trailing slashes
+	$requestUrl = trim($requestUrl, '/');
 }
 
-// strip out the base path
-$requestUrl = str_replace(BASE_PATH, '', $requestUrl);
 
-// strip any leading/trailing slashes
-$requestUrl = trim($requestUrl, '/');
 
 ob_start();
 

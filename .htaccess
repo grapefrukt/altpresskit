@@ -5,6 +5,9 @@ Options +FollowSymLinks
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteRule ^(.*)$ index.php [NC,L]
+
+	# sets an enviroment var to tell php mod_rewrite is available
+	SetEnv HTTP_MOD_REWRITE On
 </IfModule>
 
 # enables compression of assets
