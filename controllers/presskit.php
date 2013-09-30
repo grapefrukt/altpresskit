@@ -7,7 +7,7 @@ require 'helpers/emailhelper.php';
 
 class PresskitController extends Controller {
 
-	private $developer;
+	public $developer;
 
 	public function __construct(){
 		$this->developer = new Developer();
