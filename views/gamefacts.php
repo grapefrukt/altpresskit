@@ -13,12 +13,14 @@
 		<dd><?php echo $data->releaseDate; ?></dd>
 
 		<dt>Platforms:</dt>
-		<?php 
-		foreach($data->platforms as $platform) {
-			if(isset($platform['link'])) {
-				echo '<dd>', ViewHelper::link($platform['link'], $platform['name']), '</dd>';
-			} else {
-				echo '<dd>', $platform['name'], '</dd>';
+		<?php
+		if (isset($data->platforms)) {
+			foreach($data->platforms as $platform) {
+				if(isset($platform['link'])) {
+					echo '<dd>', ViewHelper::link($platform['link'], $platform['name']), '</dd>';
+				} else {
+					echo '<dd>', $platform['name'], '</dd>';
+				}
 			}
 		}
 		?>
