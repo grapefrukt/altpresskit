@@ -29,6 +29,7 @@
 	color: white;
 	transition: border-bottom-color .2s ease-in;
 	margin-bottom: 15px;
+	background: #f0f0f0;
 }
 
 #games li a:hover {

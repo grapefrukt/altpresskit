@@ -1,3 +1,4 @@
+<?php if ($data->images != null) : ?>
 <div id="images" class="twelve columns">
 	<h2>Images
 		<?php if($data->imageZip != ""): ?>
@@ -45,3 +46,4 @@
 <hr class="twelve columns" />
 <?php endif; ?>
 
+<?php endif; ?>

@@ -2,16 +2,16 @@
 
 class FileHelper {
 
-	private static $blacklist = array('.', '..', 'images', 'trailers', 'README', 'Thumbs.db', '.DS_Store');
+	private static $blacklist = array('.', '..', 'data.xml', 'images', 'trailers', 'README', 'Thumbs.db', '.DS_Store');
 
 	public static function getGames($path){
-		if (!($handle = opendir($path))) return null;
+		if (!($handle = @opendir($path))) return null;
 		
 		$dirs = array();
 
 		while (false !== ($entry = readdir($handle))) {
 			if (array_search($entry, FileHelper::$blacklist) !== false) continue;
-			if ($entry == 'data.xml') continue;
+			if ($entry == '') continue;
 
 			$dirs[] = $entry;
 		}
@@ -22,13 +22,12 @@ class FileHelper {
 	}
 
 	public static function getImages($path){
-		if (!($handle = opendir($path))) return null;
+		if (!($handle = @opendir($path))) return null;
 		
 		$dirs = array();
 
 		while (false !== ($entry = readdir($handle))) {
 			if (array_search($entry, FileHelper::$blacklist) !== false) continue;
-			if ($entry == 'data.xml') continue;
 			$dirs[] = $path . '/' . $entry;
 		}
 		

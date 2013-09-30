@@ -18,20 +18,22 @@ class Model {
 		$this->data = $data;
 		$this->images = FileHelper::getImages('data' . (strlen($directory) > 0 ? '/' : '') . $directory . '/images');
 
-		foreach($this->images as $key => $image){
-			if (Model::endsWith($image, 'logo.png')) {
-				$this->logo = $image;
-				unset($this->images[$key]);
-			}
+		if($this->images != null) {
+			foreach($this->images as $key => $image){
+				if (Model::endsWith($image, 'logo.png')) {
+					$this->logo = $image;
+					unset($this->images[$key]);
+				}
 
-			if (Model::endsWith($image, 'images.zip')) {
-				$this->imageZip = $image;
-				unset($this->images[$key]);
-			}
+				if (Model::endsWith($image, 'images.zip')) {
+					$this->imageZip = $image;
+					unset($this->images[$key]);
+				}
 
-			if (Model::endsWith($image, 'logo.zip')) {
-				$this->logoZip = $image;
-				unset($this->images[$key]);
+				if (Model::endsWith($image, 'logo.zip')) {
+					$this->logoZip = $image;
+					unset($this->images[$key]);
+				}
 			}
 		}
 	}

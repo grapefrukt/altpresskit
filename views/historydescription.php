@@ -34,8 +34,12 @@
 			<h2>Projects</h2>
 			<ul>
 			<?php foreach($data->games as $game): ?>
-				<li >
-					<?php echo ViewHelper::link($game->directory, $game->title, 'class="four columns ' . ViewHelper::alphaomega($count++) . '" style="background-image: url(' . reset($game->images) . ');"'); ?>
+				<li>
+					<?php
+						$image = '';
+						if ($game->images != null) $image = 'style="background-image: url(' . reset($game->images) . ');"';
+						echo ViewHelper::link($game->directory, $game->title, 'class="four columns ' . ViewHelper::alphaomega($count++) . '" ' . $image); 
+					?>
 				</li>
 			<?php endforeach; ?>
 			</ul>
