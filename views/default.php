@@ -18,8 +18,8 @@
 
 	<!-- CSS
   ================================================== -->
-	<link rel="stylesheet" href="skeleton/stylesheets/base.css">
-	<link rel="stylesheet" href="skeleton/stylesheets/skeleton.css">
+	<link rel="stylesheet" href="stylesheets/base.css">
+	<link rel="stylesheet" href="stylesheets/skeleton.css">
 	<link rel="stylesheet" href="stylesheets/layout.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
 

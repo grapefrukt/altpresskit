@@ -1,6 +1,0 @@
-[submodule "router"]
-	path = router
-	url = git@github.com:dannyvankooten/PHP-Router.git
-[submodule "skeleton"]
-	path = skeleton
-	url = git@github.com:dhg/Skeleton.git
