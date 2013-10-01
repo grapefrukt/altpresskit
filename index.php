@@ -11,13 +11,18 @@ require 'helpers/updatehelper.php';
 // detects if mod_rewrite is available
 ViewHelper::$mod_rewrite = getenv('HTTP_MOD_REWRITE') == 'On' ? true : false;
 
+// convienience function to set constants if not defined, used in config files
+function set($const, $value) { defined($const) || define($const, $value); }
+
 // loads config file
 if (!file_exists('config.php' )) {
-	ErrorHelper::logError('Missing config.php, make a copy of config-sample.php to get started.');
-	require 'config-sample.php';
+	ErrorHelper::logError('Missing config.php, make a copy of config-defaults.php to get started.');
 } else {
 	require 'config.php';
 }
+
+// load defaults
+require 'config-defaults.php';
 
 $requestUrl = $_SERVER['REQUEST_URI'];
 
