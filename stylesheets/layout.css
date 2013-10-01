@@ -191,10 +191,14 @@ footer {
 	padding-bottom: 60px;
 }
 
-.errors li {
+.errors li, .warnings li{
 	background-color: hsl(0, 64%, 35%);
 	padding: 10px 15px;
 	color: white;
+}
+
+.warnings li {
+	background-color: hsl(31, 50%, 41%);
 }
 
 #creditlink {

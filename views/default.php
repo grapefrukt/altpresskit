@@ -34,14 +34,23 @@
 	<!-- Primary Page Layout
 	================================================== -->
 	<div class="container">
-		<?php if(sizeof(ErrorHelper::$errors)){
-			echo '<ul class="errors sixteen columns">';
-			foreach(ErrorHelper::$errors as $error){
-				echo '<li>', $error, '</li>';
-			}
-			echo '</ul>';
-		} ?>
+		<?php
+			if (sizeof(ErrorHelper::$errors)) {
+				echo '<ul class="errors sixteen columns">';
+				foreach(ErrorHelper::$errors as $error){
+					echo '<li>', $error, '</li>';
+				}
+				echo '</ul>';
+			} 
 
+			if (sizeof(ErrorHelper::$warnings)) {
+				echo '<ul class="warnings sixteen columns">';
+				foreach(ErrorHelper::$warnings as $warnings){
+					echo '<li>', $warnings, '</li>';
+				}
+				echo '</ul>';
+			} 
+		?>
 		<header>
 			<h1 class="sixteen columns"><?php echo ViewHelper::$header; ?></h1>
 		</header>
