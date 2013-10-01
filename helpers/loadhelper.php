@@ -82,9 +82,7 @@ class LoadHelper {
 		// we need to load custom https certificates here to be able to load from github securely
 		curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__).'/cert/cacert.pem');
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1); 
-
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-
+		
 		$rawData = curl_exec($ch);
 		$error = curl_error($ch);
 		curl_close($ch);
