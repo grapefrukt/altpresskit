@@ -5,8 +5,10 @@ error_reporting(-1);
 require 'controllers/presskit.php';
 require 'helpers/errorhelper.php';
 
+// detects if mod_rewrite is available
 ViewHelper::$mod_rewrite = getenv('HTTP_MOD_REWRITE') == 'On' ? true : false;
 
+// loads config file
 if (!file_exists('config.php' )) {
 	ErrorHelper::logError('Missing config.php, make a copy of config-sample.php to get started.');
 	require 'config-sample.php';
@@ -32,7 +34,11 @@ if (isset($_GET['p']) && $_GET['p'] != ""){
 	$requestUrl = trim($requestUrl, '/');
 }
 
-
+// if mod_rewrite is available and we're on a legacy url, redirect to the new, nicer one
+if (ViewHelper::$mod_rewrite && isset($_GET['p'])){
+	header("HTTP/1.1 301 Moved Permanently"); 
+	header("Location: /" . BASE_PATH . '/' . $requestUrl); 
+}
 
 ob_start();
 
