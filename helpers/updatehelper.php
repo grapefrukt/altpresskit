@@ -8,6 +8,7 @@ class UpdateHelper {
 
 	private static $new = null;
 	public static $hasUpdate = false;
+	public static $newVersion = '';
 
 	public static function check($debug = false) {
 		if (UPDATE_TYPE <= 0) {
@@ -37,6 +38,7 @@ class UpdateHelper {
 		if ($debug) ErrorHelper::logDebug('Newest server version is: ' . UpdateHelper::$new->name);
 		if ($debug) ErrorHelper::logDebug('Local version is: ' . VERSION);
 		
+		UpdateHelper::$newVersion = UpdateHelper::$new->name;
 		UpdateHelper::$hasUpdate = UpdateHelper::isRemoteNewer(VERSION, UpdateHelper::$new->name);
 
 		if ($debug) ErrorHelper::logDebug(UpdateHelper::$hasUpdate ? "Remote newer" : "Local newer or same");
