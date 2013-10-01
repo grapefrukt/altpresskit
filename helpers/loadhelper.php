@@ -37,7 +37,7 @@ class LoadHelper {
 				if ($debug) ErrorHelper::logDebug('cURL request failed:' . $error);
 				if ($changed != 0){
 					if($debug) ErrorHelper::logDebug('Using expired cache');
-					$cache = unserialize(file_get_contents($filename));
+					$cache = file_get_contents($filename);
 					return $cache;
 				} else {
 					if ($debug) ErrorHelper::logDebug('Request failed, no cache');
@@ -48,7 +48,7 @@ class LoadHelper {
 			if ($debug) ErrorHelper::logDebug('Data returned, saving it to cache');
 
 			$cache = fopen($filename, 'wb');
-			$write = fwrite($cache, serialize($rawData));
+			$write = fwrite($cache, $rawData);
 
 			if ($debug && !$write) ErrorHelper::logDebug('Writing to ' . $filename . ' failed. Make sure the folder ' . dirname(__FILE__) . '/cache/ is writeable (chmod 777)');
 
@@ -58,7 +58,7 @@ class LoadHelper {
 
 		if ($debug) ErrorHelper::logDebug('Cache hit, using that');
 
-		return unserialize(file_get_contents($filename));
+		return file_get_contents($filename);
 	}
 
 	public static function hasCache($url, $expires){
@@ -93,7 +93,11 @@ class LoadHelper {
 	}
 
 	public static function getFilename($url) {
-		return dirname(__FILE__).'/../cache/' . md5($url) . '.cache';
+		return LoadHelper::getCacheDir() . md5($url) . '.cache';
+	}
+
+	public static function getCacheDir() {
+		return dirname(__FILE__).'/../cache/';
 	}
 }
 ?>
