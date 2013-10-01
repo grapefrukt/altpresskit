@@ -3,40 +3,137 @@
 class UpdateHelper {
 
 	const url = 'https://api.github.com/repos/grapefrukt/altpresskit/tags';
+	const tmp_path = 'update';
+	const destination = '.';
+
+	private static $new = null;
+	public static $hasUpdate = false;
 
 	public static function check($debug = false) {
-		if (UPDATE_TYPE == 0) return;
-
-		if (LoadHelper::hasCache(UpdateHelper::url, UPDATE_FREQUENCY)) {
-			if ($debug) ErrorHelper::logDebug('Not checking for new version yet.');
-			return;
-		}
+		if (UPDATE_TYPE <= 0) {
+			if ($debug) ErrorHelper::logDebug('Update checking disabled in config');
+			return false;	
+		} 
 		
-		$data = LoadHelper::loadCached(UpdateHelper::url, UPDATE_FREQUENCY - 1);
+		$data = LoadHelper::loadCached(UpdateHelper::url, UPDATE_FREQUENCY);
 		if (!$data) {
 			if ($debug) ErrorHelper::logDebug('No version data loaded from server');
-			return;
+			return false;
 		}
 		
 		$data = json_decode($data);
 		
-		$newest = null;
 		foreach ($data as $tag) {
-			if ($newest == null || UpdateHelper::isRemoteNewer($newest->name, $tag->name)) {
-				$newest = $tag;
+			if (UpdateHelper::$new == null || UpdateHelper::isRemoteNewer(UpdateHelper::$new->name, $tag->name)) {
+				UpdateHelper::$new = $tag;
 			}
 		}
 		
-		if ($newest == null){
+		if (UpdateHelper::$new == null){
 			if ($debug) ErrorHelper::logDebug('No tags loaded from server');
-			return;	
+			return false;	
 		} 
 		
-		if ($debug) ErrorHelper::logDebug('Newest server version is: ' . $newest->name);
+		if ($debug) ErrorHelper::logDebug('Newest server version is: ' . UpdateHelper::$new->name);
+		if ($debug) ErrorHelper::logDebug('Local version is: ' . VERSION);
 		
-		$isNewer = UpdateHelper::isRemoteNewer(VERSION, $newest->name);
+		UpdateHelper::$hasUpdate = UpdateHelper::isRemoteNewer(VERSION, UpdateHelper::$new->name);
+
+		if ($debug) ErrorHelper::logDebug(UpdateHelper::$hasUpdate ? "Remote newer" : "Local newer or same");
+
+		if (UPDATE_TYPE <= 1 || !UpdateHelper::$hasUpdate) return false;
 		
-		if ($debug) ErrorHelper::logDebug($isNewer ? "remote newer" : "local newer or same");
+		$installedUpdate = UpdateHelper::install($debug);
+
+		return $installedUpdate;
+	}
+
+	private static function install($debug = false) {
+		if (!extension_loaded('zip') ) {
+			ErrorHelper::logWarning('zip extensions unavailable on server, can\'t extract updates without it');
+			return;
+		}
+
+		LoadHelper::loadCached(UpdateHelper::$new->zipball_url, 1000);
+
+		$zip = new ZipArchive();
+		if ($zip->open(LoadHelper::getFilename(UpdateHelper::$new->zipball_url)) === TRUE) {
+
+			// make sure temp directory is empty
+			UpdateHelper::removeTemp();
+
+			$success = $zip->extractTo(LoadHelper::getCacheDir() . UpdateHelper::tmp_path);
+
+			$zip->close();
+
+			if ($debug) ErrorHelper::logDebug('Update archive ' . ($success ? 'extracted successfully' : 'failed to extract'));
+		} else {
+			if ($debug) ErrorHelper::logWarning('Failed extracting update archive');
+			return;
+		}
+
+		// updates from github are packed in a folder within the zip, we need the name of this folder
+		$rootFolder = '';
+
+		$iterator = UpdateHelper::getUpdateIterator(false);
+		foreach ($iterator as $item) {
+
+			// the first folder we hit when iterating will be the root folder, save that
+			if ($item->isDir() && $rootFolder == '') {
+				$rootFolder = $iterator->getSubPathName();
+				if ($debug) ErrorHelper::logDebug('Update root folder is ' . $rootFolder);
+
+				// we won't ever need to create the root folder, so we skip to the next item
+				continue;
+			} 
+
+			// figure out destination path
+			$destination = realpath(UpdateHelper::destination . UpdateHelper::removePrefix($iterator->getSubPathName(), $rootFolder));
+
+			if ($item->isDir()) {
+				if (file_exists($destination)) continue;
+				
+				if ($debug) ErrorHelper::logDebug('Create directory ' . $destination);
+				mkdir($destination);
+			} else {
+				$success = copy($item, $destination);
+				if ($debug) ErrorHelper::logDebug('Copy file from ' . $item . ' to ' . $destination . ($success ? ' OK' : ' Failed'));
+			}
+		}
+
+		// remove any temporary files extracted in the process
+		UpdateHelper::removeTemp();
+
+		// remove the update zip file, we won't need it anymore
+		unlink(LoadHelper::getFilename(UpdateHelper::$new->zipball_url));
+
+		return true;
+	}
+
+	private static function removePrefix($str, $prefix) {
+		if (substr($str, 0, strlen($prefix)) == $prefix) {
+			$str = substr($str, strlen($prefix));
+		}
+		return $str;
+	}
+
+	private static function removeTemp(){
+		// recursively delete everything in update folder
+		foreach (UpdateHelper::getUpdateIterator(true) as $item) {
+			if ($item->isDir()) {
+				//if ($debug) ErrorHelper::logDebug('rmdir ' . $item->getRealPath());
+				rmdir($item->getRealPath());
+			} else {
+				//if ($debug) ErrorHelper::logDebug('unlink ' . $item->getRealPath());
+				unlink($item->getRealPath());
+			}
+		}
+	}
+
+	private static function getUpdateIterator($childFirst) {
+		// deleting needs to be child first, copying self first
+		$mode = ($childFirst ? RecursiveIteratorIterator::CHILD_FIRST : RecursiveIteratorIterator::SELF_FIRST);
+		return new RecursiveIteratorIterator(new RecursiveDirectoryIterator(realpath(LoadHelper::getCacheDir() . UpdateHelper::tmp_path), RecursiveDirectoryIterator::SKIP_DOTS), $mode);
 	}
 
 	private static function isRemoteNewer($localString, $remoteString){

@@ -43,7 +43,11 @@ if (ViewHelper::$mod_rewrite && isset($_GET['p'])){
 	header("Location: /" . BASE_PATH . '/' . $requestUrl); 
 }
 
-UpdateHelper::check();
+// checks for new updates and installs them if updates are enabled
+if (UpdateHelper::check()){
+	// if it did install updates, redirects to this page again to make sure nothing gets broken as files are changed
+	header("Location: /" . BASE_PATH . '/' . $requestUrl . '?updated=1'); 
+}
 
 ob_start();
 
