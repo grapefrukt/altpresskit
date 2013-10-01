@@ -43,9 +43,7 @@ class UpdateHelper {
 		$local = explode('.', $localString);
 		$remote = explode('.', $remoteString);
 		
-		for ($i = 0; $i < sizeof($local) && $i < sizeof($remote); $i++) {
-			echo 'remote: ', intval($remote[$i]), ' vs. local: ', intval($local[$i]), "\n";
-			
+		for ($i = 0; $i < sizeof($local) && $i < sizeof($remote); $i++) {			
 			if (intval($remote[$i]) > intval($local[$i])) return true;
 		}
 		
