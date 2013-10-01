@@ -15,9 +15,23 @@ define('PROMOTER_OVERWRITE', true);
 
 /**
 * Promoter cache
-* The number of seconds before locally cached copy of promoter data is invalidated (defaults to 3600)
+* The number of seconds before locally cached copy of promoter data is invalidated (defaults to 1 hour)
 */
-define('PROMOTER_CACHE_DURATION', 3600);
+define('PROMOTER_CACHE_DURATION', 1 * 60 * 60);
+
+/**
+* Auto update type
+* 0 = never check
+* 1 = check and display notification
+* 2 = check and install automatically
+*/
+define('UPDATE_TYPE', 1);
+
+/**
+* Update check frequency (Only applies if UPDATE_TYPE is set to 1 or higher)
+* The number of seconds before rechecking if up to date with github (defaults to 7 days)
+*/
+define('UPDATE_CACHE_DURATION', 7 * 24 * 60 * 60);
 
 /**
 * E-mail settings

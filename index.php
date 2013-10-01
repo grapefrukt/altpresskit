@@ -2,8 +2,11 @@
 ini_set('display_errors','On');
 error_reporting(-1);
 
+define('VERSION', '0.0.1');
+
 require 'controllers/presskit.php';
 require 'helpers/errorhelper.php';
+require 'helpers/updatehelper.php';
 
 // detects if mod_rewrite is available
 ViewHelper::$mod_rewrite = getenv('HTTP_MOD_REWRITE') == 'On' ? true : false;
@@ -39,6 +42,8 @@ if (ViewHelper::$mod_rewrite && isset($_GET['p'])){
 	header("HTTP/1.1 301 Moved Permanently"); 
 	header("Location: /" . BASE_PATH . '/' . $requestUrl); 
 }
+
+UpdateHelper::check();
 
 ob_start();
 
