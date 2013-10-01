@@ -23,7 +23,7 @@ define('PROMOTER_CACHE_DURATION', 1 * 60 * 60);
 * Auto update type
 * 0 = never check
 * 1 = check and display notification
-* 2 = check and install automatically
+* 2 = check and install automatically (experimental, may break things in crazy ways, HERE BE DRAGONS)
 */
 define('UPDATE_TYPE', 1);
 
