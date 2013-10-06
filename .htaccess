@@ -10,39 +10,97 @@ Options +FollowSymLinks
 	SetEnv HTTP_MOD_REWRITE On
 </IfModule>
 
-# enables compression of assets
 <IfModule mod_deflate.c>
-	AddOutputFilterByType DEFLATE text/html text/plain text/xml image/svg+xml
-	AddOutputFilterByType DEFLATE text/css application/x-javascript application/javascript
-	AddOutputFilterByType DEFLATE text/css text/html text/plain text/xml text/javascript
+
+	# Force compression for mangled headers.
+	# http://developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping
+	<IfModule mod_setenvif.c>
+		<IfModule mod_headers.c>
+			SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+			RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+		</IfModule>
+	</IfModule>
+
+	# Compress all output labeled with one of the following MIME-types
+	# (for Apache versions below 2.3.7, you don't need to enable `mod_filter`
+	#  and can remove the `<IfModule mod_filter.c>` and `</IfModule>` lines
+	#  as `AddOutputFilterByType` is still in the core directives).
+	<IfModule mod_filter.c>
+		AddOutputFilterByType DEFLATE application/atom+xml \
+									  application/javascript \
+									  application/json \
+									  application/rss+xml \
+									  application/vnd.ms-fontobject \
+									  application/x-font-ttf \
+									  application/x-web-app-manifest+json \
+									  application/xhtml+xml \
+									  application/xml \
+									  font/opentype \
+									  image/svg+xml \
+									  image/x-icon \
+									  text/css \
+									  text/html \
+									  text/plain \
+									  text/x-component \
+									  text/xml
+	</IfModule>
+
 </IfModule>
 
-# disables ETags
-<IfModule mod_headers>
+<IfModule mod_headers.c>
 	Header unset ETag
 </IfModule>
+
 FileETag None
 
-# sets far future expiry dates
-<IfModule mod_expires>
-	ExpiresActive On
-	ExpiresDefault A0
-	ExpiresByType image/gif A2592000
-	ExpiresByType image/png A2592000
-	ExpiresByType image/jpg A2592000
-	ExpiresByType image/jpeg A2592000
-	ExpiresByType image/ico A2592000
-	ExpiresByType image/svg+xml A2592000
-	ExpiresByType text/css A2592000
-	ExpiresByType text/javascript A2592000
-	ExpiresByType application/javascript A2592000
-</IfModule>
+<IfModule mod_expires.c>
+	ExpiresActive on
+	ExpiresDefault									  "access plus 1 month"
 
-# 480 weeks
-<IfModule mod_headers>
-	<FilesMatch ".(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|svg)$">
-		Header set Cache-Control "max-age=290304000, public"
-	</FilesMatch>
+  # CSS
+	ExpiresByType text/css							  "access plus 1 week"
+
+  # Data interchange
+	ExpiresByType application/json					  "access plus 0 seconds"
+	ExpiresByType application/xml					   "access plus 0 seconds"
+	ExpiresByType text/xml							  "access plus 0 seconds"
+
+  # Favicon (cannot be renamed!)
+	ExpiresByType image/x-icon						  "access plus 1 week"
+
+  # HTML components (HTCs)
+	ExpiresByType text/x-component					  "access plus 1 month"
+
+  # HTML
+	ExpiresByType text/html							 "access plus 0 seconds"
+
+  # JavaScript
+	ExpiresByType application/javascript				"access plus 1 week"
+
+  # Manifest files
+	ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
+	ExpiresByType text/cache-manifest				   "access plus 0 seconds"
+
+  # Media
+	ExpiresByType audio/ogg							 "access plus 1 month"
+	ExpiresByType image/gif							 "access plus 1 month"
+	ExpiresByType image/jpeg							"access plus 1 month"
+	ExpiresByType image/png							 "access plus 1 month"
+	ExpiresByType video/mp4							 "access plus 1 month"
+	ExpiresByType video/ogg							 "access plus 1 month"
+	ExpiresByType video/webm							"access plus 1 month"
+
+  # Web feeds
+	ExpiresByType application/atom+xml				  "access plus 1 hour"
+	ExpiresByType application/rss+xml				   "access plus 1 hour"
+
+  # Web fonts
+	ExpiresByType application/font-woff				 "access plus 1 month"
+	ExpiresByType application/vnd.ms-fontobject		 "access plus 1 month"
+	ExpiresByType application/x-font-ttf				"access plus 1 month"
+	ExpiresByType font/opentype						 "access plus 1 month"
+	ExpiresByType image/svg+xml						 "access plus 1 month"
+
 </IfModule>
 
 # hides .git folder
