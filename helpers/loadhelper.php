@@ -20,12 +20,16 @@ class LoadHelper {
 	returns either the raw cURL data or false if request fails and no cache is available
 
 	*/
+
+	private static $error = null;
+
 	public static function loadCached($url, $expires, $debug = false){
 		if (!function_exists('curl_version')){
 			ErrorHelper::logWarning('Could not fetch data, cURL unavailable');
 			return null;
 		}
 		
+		if ($debug) ErrorHelper::logDebug('cURL for: ' . $url);
 		$filename = LoadHelper::getFilename($url);
 		
 		if (!LoadHelper::hasCache($url, $expires)) {
@@ -34,9 +38,9 @@ class LoadHelper {
 			$rawData = LoadHelper::load($url);
 			
 			if (!$rawData) {
-				if ($debug) ErrorHelper::logDebug('cURL request failed:' . $error);
-				if ($changed != 0){
-					if($debug) ErrorHelper::logDebug('Using expired cache');
+				if ($debug) ErrorHelper::logDebug('cURL request failed: ' . LoadHelper::$error);
+				if (LoadHelper::hasCache($url, -1)){
+					if ($debug) ErrorHelper::logDebug('Using expired cache');
 					$cache = file_get_contents($filename);
 					return $cache;
 				} else {
@@ -61,11 +65,16 @@ class LoadHelper {
 		return file_get_contents($filename);
 	}
 
+	/** checks for cache of specified url
+	*	$expires is expiration time in seconds, put a negative value to never expire
+	*/
 	public static function hasCache($url, $expires){
 		$filename = LoadHelper::getFilename($url);
 		$changed = 0;
 
 		if (!file_exists($filename)) return false;
+
+		if ($expires < 0) return true;
 
 		$changed = filemtime($filename);
 		$now = time();
@@ -75,16 +84,27 @@ class LoadHelper {
 	}
 
 	public static function load($url){
+		LoadHelper::$error = "";
+
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+		/*
+		ErrorHelper::logDebug(LoadHelper::getFilename('log'));
+		$log = fopen(LoadHelper::getFilename('log'), "w+");
+		curl_setopt($ch, CURLOPT_VERBOSE, true);
+		curl_setopt($ch, CURLOPT_STDERR, $log);
+		*/
 
 		// we need to load custom https certificates here to be able to load from github securely
 		curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__).'/cert/cacert.pem');
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1); 
 		
 		$rawData = curl_exec($ch);
-		$error = curl_error($ch);
+
+		LoadHelper::$error = curl_error($ch); // . "\n" + fread($log, filesize(LoadHelper::getFilename('log')));
+
 		curl_close($ch);
 
 		return $rawData;
@@ -95,7 +115,7 @@ class LoadHelper {
 	}
 
 	public static function getCacheDir() {
-		return dirname(__FILE__).'/../cache/';
+		return dirname(__FILE__) . '/../cache/';
 	}
 }
 ?>
