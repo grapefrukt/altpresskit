@@ -13,7 +13,7 @@ class UpdateHelper {
 	public static function check($debug = false) {
 		if (UPDATE_TYPE <= 0) {
 			if ($debug) ErrorHelper::logDebug('Update checking disabled in config');
-			return false;	
+			return false;
 		} 
 		
 		$data = LoadHelper::loadCached(UpdateHelper::url, UPDATE_FREQUENCY);
@@ -23,6 +23,11 @@ class UpdateHelper {
 		}
 		
 		$data = json_decode($data);
+
+		if (isset($data->message) && $data->message) {
+			if ($debug) ErrorHelper::logDebug('Error from GitHub: ' . $data->message);
+			return false;
+		}
 		
 		foreach ($data as $tag) {
 			if (UpdateHelper::$new == null || UpdateHelper::isRemoteNewer(UpdateHelper::$new->name, $tag->name)) {
