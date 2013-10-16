@@ -125,6 +125,11 @@ class UpdateHelper {
 	}
 
 	private static function removeTemp(){
+		// make sure update directory exists before trying to clear it
+		if (!file_exists(UpdateHelper::getTempPath())) {
+			mkdir(UpdateHelper::getTempPath(), 0777, true);
+		}
+
 		// recursively delete everything in update folder
 		foreach (UpdateHelper::getUpdateIterator(true) as $item) {
 			if ($item->isDir()) {
@@ -140,7 +145,11 @@ class UpdateHelper {
 	private static function getUpdateIterator($childFirst) {
 		// deleting needs to be child first, copying self first
 		$mode = ($childFirst ? RecursiveIteratorIterator::CHILD_FIRST : RecursiveIteratorIterator::SELF_FIRST);
-		return new RecursiveIteratorIterator(new RecursiveDirectoryIterator(realpath(LoadHelper::getCacheDir() . UpdateHelper::tmp_path), RecursiveDirectoryIterator::SKIP_DOTS), $mode);
+		return new RecursiveIteratorIterator(new RecursiveDirectoryIterator(UpdateHelper::getTempPath()), RecursiveDirectoryIterator::SKIP_DOTS), $mode);
+	}
+
+	private static function getTempPath() {
+		return realpath(LoadHelper::getCacheDir() . UpdateHelper::tmp_path);
 	}
 
 	private static function isRemoteNewer($localString, $remoteString){
