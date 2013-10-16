@@ -61,7 +61,7 @@ class UpdateHelper {
 			return;
 		}
 
-		LoadHelper::loadCached(UpdateHelper::$new->zipball_url, 1000);
+		LoadHelper::loadCached(UpdateHelper::$new->zipball_url, 1000, $debug);
 
 		$zip = new ZipArchive();
 		if ($zip->open(LoadHelper::getFilename(UpdateHelper::$new->zipball_url)) === TRUE) {
