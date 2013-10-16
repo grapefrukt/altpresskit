@@ -145,7 +145,7 @@ class UpdateHelper {
 	private static function getUpdateIterator($childFirst) {
 		// deleting needs to be child first, copying self first
 		$mode = ($childFirst ? RecursiveIteratorIterator::CHILD_FIRST : RecursiveIteratorIterator::SELF_FIRST);
-		return new RecursiveIteratorIterator(new RecursiveDirectoryIterator(UpdateHelper::getTempPath()), RecursiveDirectoryIterator::SKIP_DOTS), $mode);
+		return new RecursiveIteratorIterator(new RecursiveDirectoryIterator(UpdateHelper::getTempPath(), RecursiveDirectoryIterator::SKIP_DOTS), $mode);
 	}
 
 	private static function getTempPath() {
