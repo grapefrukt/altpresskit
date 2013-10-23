@@ -18,9 +18,9 @@
 
 	<!-- CSS
   ================================================== -->
-	<link rel="stylesheet" href="stylesheets/base.css">
-	<link rel="stylesheet" href="stylesheets/skeleton.css">
-	<link rel="stylesheet" href="stylesheets/layout.css">
+	<link rel="stylesheet" href="/<?php echo BASE_PATH; ?>/stylesheets/base.css">
+	<link rel="stylesheet" href="/<?php echo BASE_PATH; ?>/stylesheets/skeleton.css">
+	<link rel="stylesheet" href="/<?php echo BASE_PATH; ?>/stylesheets/layout.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
 
 	<!-- Favicons
@@ -74,7 +74,7 @@
 	</div><!-- container -->
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	<script src="js/presskit.js" type="text/javascript"></script>	
+	<script src="/<?php echo BASE_PATH; ?>/js/presskit.js" type="text/javascript"></script>	
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->

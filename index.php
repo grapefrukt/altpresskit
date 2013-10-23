@@ -38,6 +38,15 @@ if (isset($_GET['p']) && $_GET['p'] != ''){
 	// strip out the base path
 	$requestUrl = str_replace(BASE_PATH, '', $requestUrl);
 
+	// strip any leading slashes
+	$requestUrl = ltrim($requestUrl, '/');
+
+	// if mod_rewrite is available and the request doesn't end with a slash, redirect to one that does
+	if (ViewHelper::$mod_rewrite && strlen($requestUrl) > 1 && substr($requestUrl, -1) != '/'){
+		header('HTTP/1.1 301 Moved Permanently'); 
+		header('Location: /' . BASE_PATH . '/' . $requestUrl . '/');
+	}
+
 	// strip any leading/trailing slashes
 	$requestUrl = trim($requestUrl, '/');
 }

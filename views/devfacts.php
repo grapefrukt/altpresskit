@@ -21,7 +21,7 @@
 
 		<dt>Releases:</dt>
 		<?php foreach($data->games as $game): ?>
-			<dd><?php echo ViewHelper::link($game->directory, $game->title); ?></dd>
+			<dd><?php echo ViewHelper::link($game->directory . '/', $game->title); ?></dd>
 		<?php endforeach; ?>
 
 		<dt>Phone:</dt>

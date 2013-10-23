@@ -1,7 +1,7 @@
 <?php
 /**
 * The install path on your server, if it's in the root ie. http://altpresskit.grapefrukt.com leave it empty
-* If in a subfolder like http://grapefrukt.com/presskit/, put presskit/ below 
+* If in a subfolder like http://grapefrukt.com/presskit/, put presskit/ below. The trailing slash is important!
 */
 set('BASE_PATH', '');
 
