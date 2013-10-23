@@ -27,7 +27,7 @@ require 'config-defaults.php';
 $requestUrl = $_SERVER['REQUEST_URI'];
 
 // support for presskit legacy urls, also used when mod_rewrite is unavailable
-if (isset($_GET['p']) && $_GET['p'] != ""){
+if (isset($_GET['p']) && $_GET['p'] != ''){
 	$requestUrl = $_GET['p'];
 } else {
 	// strip GET variables from URL
@@ -44,14 +44,14 @@ if (isset($_GET['p']) && $_GET['p'] != ""){
 
 // if mod_rewrite is available and we're on a legacy url, redirect to the new, nicer one
 if (ViewHelper::$mod_rewrite && isset($_GET['p'])){
-	header("HTTP/1.1 301 Moved Permanently"); 
-	header("Location: /" . BASE_PATH . '/' . $requestUrl); 
+	header('HTTP/1.1 301 Moved Permanently'); 
+	header('Location: /' . BASE_PATH . '/' . $requestUrl); 
 }
 
 // checks for new updates and installs them if updates are enabled
 if (UpdateHelper::check()){
 	// if it did install updates, redirects to this page again to make sure nothing gets broken as files are changed
-	header("Location: /" . BASE_PATH . '/' . $requestUrl . '?updated=1'); 
+	header('Location: /' . BASE_PATH . '/' . $requestUrl . '?updated=1'); 
 }
 
 ob_start();
