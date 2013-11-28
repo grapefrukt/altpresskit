@@ -2,7 +2,7 @@
 ini_set('display_errors','On');
 error_reporting(-1);
 
-define('VERSION', '0.0.5');
+define('VERSION', '0.0.8');
 
 require 'controllers/presskit.php';
 require 'helpers/errorhelper.php';
