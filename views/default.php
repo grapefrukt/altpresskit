@@ -69,7 +69,7 @@
 		<?php echo $content; ?>
 
 		<footer class="one column offset-by-fifteen">
-			<a id="creditlink" href="credits"><span>powered by alt. presskit()</span></a>
+			<a id="creditlink" href="/<?php echo BASE_PATH; ?>credits"><span>powered by alt. presskit()</span></a>
 		</footer>
 	</div><!-- container -->
 
