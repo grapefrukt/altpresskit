@@ -2,7 +2,7 @@
 <div id="images" class="twelve columns">
 	<h2>Images
 		<?php if($data->imageZip != ""): ?>
-			<a class="download" title="Download all logos as an archive" href="/<?php echo BASE_PATH . $data->imageZip; ?>"><?php echo ViewHelper::icon('download'); ?></a>
+			<a class="download" title="Download all images as an archive" href="/<?php echo BASE_PATH . $data->imageZip; ?>"><?php echo ViewHelper::icon('download'); ?></a>
 		<?php endif; ?>
 	</h2>
 	<ul>
