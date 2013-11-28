@@ -20,7 +20,7 @@ class PresskitController extends Controller {
 		ViewHelper::render('devfacts', array('data' => $this->developer));
 		ViewHelper::render('historydescription', array('data' => $this->developer));
 		ViewHelper::render('images', array('data' => $this->developer));
-		ViewHelper::render('trailers', array('trailers' => $this->developer->trailers));
+		ViewHelper::render('trailers', array('trailers' => $this->developer->trailers, 'directory' => ''));
 		ViewHelper::render('additionals', array('data' => $this->developer));
 		ViewHelper::render('teamcontact', array('data' => $this->developer, 'developer' => $this->developer));
 	}
@@ -41,7 +41,7 @@ class PresskitController extends Controller {
 		ViewHelper::render('gamefacts', array('data' => $game, 'developer' => $this->developer));
 		ViewHelper::render('historydescription', array('data' => $game));
 		ViewHelper::render('images', array('data' => $game));
-		ViewHelper::render('trailers', array('trailers' => $game->trailers));
+		ViewHelper::render('trailers', array('trailers' => $game->trailers, 'directory' => $directory));
 		ViewHelper::render('awardspress', array('data' => $game));
 		ViewHelper::render('presscopy', array('data' => $game));
 		ViewHelper::render('about', array('data' => $this->developer));

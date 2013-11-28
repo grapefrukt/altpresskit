@@ -1,12 +1,12 @@
 <?php 
-	function videolink($key, $label, $data, &$list){
+	function videolink($key, $label, $data, &$list, $directory){
 		if (!isset($data[$key])) return;
 		if($key == 'youtube'){
 			$list[] = ViewHelper::link('http://youtu.be/' . $data[$key], $label);
 		} else if($key == 'vimeo'){
 			$list[] = ViewHelper::link('https://vimeo.com/' . $data[$key], $label);
 		} else {
-			$list[] = ViewHelper::link('trailers/' . $data[$key], $label);
+			$list[] = ViewHelper::link('/' . BASE_PATH . 'data/' . $directory . '/trailers/' . $data[$key], $label);
 		}
 	}
 ?>
@@ -16,10 +16,10 @@
 	$count = 0;
 	foreach($trailers as $trailer){
 		$links = array();
-		videolink('youtube', ViewHelper::icon('youtube-play'), $trailer, $links);
-		videolink('vimeo', ViewHelper::icon('play-sign'), $trailer, $links);
-		videolink('mov', ViewHelper::icon('download'), $trailer, $links);
-		videolink('mp4', ViewHelper::icon('download'), $trailer, $links);
+		videolink('youtube', ViewHelper::icon('youtube-play'), $trailer, $links, $directory);
+		videolink('vimeo', ViewHelper::icon('play-sign'), $trailer, $links, $directory);
+		videolink('mov', ViewHelper::icon('download'), $trailer, $links, $directory);
+		videolink('mp4', ViewHelper::icon('download'), $trailer, $links, $directory);
 
 		$isodd = sizeof($trailers) % 2 == 1;
 		$class = 'six columns '. ViewHelper::alphaomega($count, $isodd);
