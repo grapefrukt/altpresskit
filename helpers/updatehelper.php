@@ -24,6 +24,11 @@ class UpdateHelper {
 		
 		$data = json_decode($data);
 
+		if ($data == null) {
+			if ($debug) ErrorHelper::logDebug('No data returned from GitHub.');
+			return false;
+		}
+
 		if (isset($data->message) && $data->message) {
 			if ($debug) ErrorHelper::logDebug('Error from GitHub: ' . $data->message);
 			return false;
