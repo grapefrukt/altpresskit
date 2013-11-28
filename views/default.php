@@ -25,7 +25,7 @@
 
 	<!-- Favicons
 	================================================== -->
-	<link rel="shortcut icon" href="images/favicon.png">
+	<link rel="shortcut icon" href="/<?php echo BASE_PATH; ?>images/favicon.png">
 
 	<?php if (isset($presskit)) ViewHelper::render('analytics', array('code' => $presskit->developer->analytics)); ?>
 </head>
