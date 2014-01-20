@@ -51,12 +51,15 @@ class LoadHelper {
 
 			if ($debug) ErrorHelper::logDebug('Data returned, saving it to cache');
 
-			$cache = fopen($filename, 'wb');
-			$write = fwrite($cache, $rawData);
+			$folder = LoadHelper::getCacheDir();
+			if (!file_exists($folder)) mkdir($folder);
 
-			if ($debug && !$write) ErrorHelper::logDebug('Writing to ' . $filename . ' failed. Make sure the folder ' . dirname(__FILE__) . '/cache/ is writeable (chmod 777)');
+			$cache = @fopen($filename, 'wb');
+			$write = $cache ? fwrite($cache, $rawData) : null;
 
-			fclose($cache);
+			if (!$write) ErrorHelper::logWarning('Writing to cache failed. Make sure the folder ' . $folder . ' exists and is writeable (chmod 777)');
+
+			if ($cache) fclose($cache);
 			return $rawData;
 		}
 
