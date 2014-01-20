@@ -24,8 +24,18 @@ class XMLHelper {
 		XMLHelper::collapse($data, 'contacts', 'contact');
 
 		XMLHelper::collapse($data, 'platforms', 'platform');
-		XMLHelper::collapse($data, 'prices', 'price');
 		XMLHelper::collapse($data, 'features', 'feature');
+		XMLHelper::collapse($data, 'prices', 'price');
+		
+		// transforms the pricing data to be indexed by the optional platform-tag
+		if (isset($data['prices'])){
+			$priceByPlatform = array();
+			foreach ($data['prices'] as $price) {
+				if(!isset($price['platform'])) $price['platform'] = '';
+				$priceByPlatform[$price['platform']][] = $price;
+			}
+			$data['prices'] = $priceByPlatform;
+		}
 
 		return $data;
 	}
