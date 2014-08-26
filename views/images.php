@@ -22,6 +22,9 @@
 		}
 		?>
 			<li class="<?php echo $class; ?>">
+				<?php if(strpos($image, 'cc-by-sa') !== false): ?>
+					<a class="cc-by-sa" href="http://creativecommons.org/licenses/by-sa/4.0/"><span>This image is licensed under CC BY-SA 4.0</span></a>
+				<?php endif; ?>
 				<a class="widescreen" href="/<?php echo BASE_PATH . $image; ?>" style="background-image: url(/<?php echo BASE_PATH . $image; ?>);" ></a>
 			</li>
 		<?php 

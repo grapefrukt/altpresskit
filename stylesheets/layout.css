@@ -296,6 +296,24 @@ button[disabled]:hover {
 	transition-duration: 1s;
 }
 
+.cc-by-sa {
+	position: relative;
+	top: 7px;
+	background-image: url('../images/cc-by-sa.svg');
+	background-size: contain !important;
+	background-repeat: no-repeat;
+	background-position: 100% 0% !important;
+	width: 75px !important;
+	float: right;
+	height: 15px !important;
+	overflow: hidden;
+	margin-right: 5px;
+}
+
+.cc-by-sa span {
+	visibility: hidden;
+}
+
 /* #Media Queries
 ================================================== */
 
