@@ -29,7 +29,10 @@ class FileHelper {
 		$images = array();
 
 		while (false !== ($entry = readdir($handle))) {
+			// skip blacklisted files
 			if (array_search($entry, FileHelper::$blacklist) !== false) continue;
+			// skip subdirectories
+			if (is_dir($path . '/' . $entry)) continue;
 			$images[] = $path . '/' . $entry;
 		}
 		
