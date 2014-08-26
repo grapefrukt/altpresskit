@@ -5,13 +5,15 @@ require 'loadhelper.php';
 class PromoterHelper {
 
 	public static function getData($game){
-		$data = LoadHelper::loadCached('http://promoterapp.com/dopresskit/' . $game->promoter['product'], PROMOTER_CACHE_DURATION);
+		$data = LoadHelper::loadCached('http://www.promoterapp.com/dopresskit/' . $game->promoter['product'], PROMOTER_CACHE_DURATION);
 		if($data == null) return;
 
 		$promoterxml = simplexml_load_string($data);
 
 		$promoter = XMLHelper::xml2array($promoterxml);
 		XMLHelper::collapse($promoter, 'reviews', 'review');
+
+		if(!isset($promoter['reviews'])) return;
 
 		if (PROMOTER_OVERWRITE || !isset($game->quotes)) $game->quotes = array();
 
