@@ -2,6 +2,12 @@ Options +FollowSymLinks
 
 <IfModule rewrite_module>
 	RewriteEngine On
+
+	# If you are hosting from a subfolder, you may need to add the name of that folder here.
+	# Including both leading and trailing slashes
+	# You will also need to set this as BASE_PATH in config.php
+	#RewriteBase /presskit/
+
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteRule ^(.*)$ index.php [NC,L]
