@@ -20,7 +20,7 @@ class ViewHelper {
 
 	public static function linkProject($url, $text = '', $extra = ''){
 		if ($text == '') $text = $url;
-		if (!ViewHelper::$mod_rewrite) $url = 'sheet.php?p=' . $url;
+		if (!ViewHelper::$mod_rewrite) $url = 'sheet.php?p=' . $url . trim($url, '/');
 		return '<a href="' . $url . '" ' . $extra . '>' . $text . '</a>';
 	}
 
