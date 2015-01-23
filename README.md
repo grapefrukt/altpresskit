@@ -4,7 +4,7 @@ Is a free (both as in speech and as in beer) alternative to the excellent [press
 
 ## Why make an alternative?
 
-Rami is one of the busiest people on earth, and while presskit() is pretty great, it's not perfect. By making a new version, using open source and the accompanying collaboration methods I hope to make it even better. 
+Rami is one of the busiest people on earth, and while presskit() is pretty great, it's not perfect. By making a new version, using open source and the accompanying collaboration methods I hope to make it even better. Since this project was started, the [original presskit()](https://github.com/ramiismail/dopresskit) has gone open source. 
 
 Pull requests are welcomed, but keep in mind the intent: Stay minimal and efficient. No bloat.
 
@@ -26,11 +26,11 @@ http://altpresskit.grapefrukt.com/ runs on the latest checkout from github on th
 * [Martin Jonasson](http://grapefrukt.com)
 
 ## To Do
-- Provide default templates for data.xml
 - Add 404 page for missing projects 
-- ✓ Google Analytics
-- ✓ Fix link parsing
-- ✓ Make updating/installing easier
-- ✓ Deal with missing data.xml, images folder and so on
-- ✓ Integrate skeleton (not as submodule)
-- ✓ Look into updating of installations via github
+- [x] Provide default templates for data.xml
+- [x] Google Analytics
+- [x] Fix link parsing
+- [x] Make updating/installing easier
+- [x] Deal with missing data.xml, images folder and so on
+- [x] Integrate skeleton (not as submodule)
+- [x] Look into updating of installations via github
