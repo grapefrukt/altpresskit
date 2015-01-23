@@ -1,1 +1,3 @@
 Put your data.xml, images/videos and game specific subfolders in this folder.
+A good template to start from is provided by the original presskit() project: 
+https://github.com/ramiismail/dopresskit/blob/master/archive/_data.xml
