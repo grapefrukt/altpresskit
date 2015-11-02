@@ -30,6 +30,7 @@ class FileHelper {
 
 		while (false !== ($entry = readdir($handle))) {
 			if (array_search($entry, FileHelper::$blacklist) !== false) continue;
+			if (!is_file($path . '/' . $entry)) continue;
 			$images[] = $path . '/' . $entry;
 		}
 		
