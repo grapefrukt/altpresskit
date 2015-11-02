@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require 'loadhelper.php';
 
@@ -12,6 +12,8 @@ class PromoterHelper {
 
 		$promoter = XMLHelper::xml2array($promoterxml);
 		XMLHelper::collapse($promoter, 'reviews', 'review');
+
+		if (!isset($promoter['reviews'])) return;
 
 		if (PROMOTER_OVERWRITE || !isset($game->quotes)) $game->quotes = array();
 
