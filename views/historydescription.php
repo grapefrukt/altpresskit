@@ -33,12 +33,21 @@
 		<div id="games" class="eight columns">
 			<h2>Projects</h2>
 			<ul>
-			<?php foreach($data->games as $game): ?>
+			<?php 
+			$firstWide = sizeof($data->games) % 2 == 1;
+			foreach($data->games as $game): ?>
 				<li>
 					<?php
 						$image = '';
 						if ($game->images != null) $image = 'style="background-image: url(' . reset($game->images) . ');"';
-						echo ViewHelper::linkProject($game->directory . '/', $game->title, 'class="four columns ' . ViewHelper::alphaomega($count++) . '" ' . $image); 
+						$style = 'four columns ';
+						if ($firstWide) {
+							$style = 'eight columns alpha omega tall';
+							$firstWide = false;
+						} else {
+							$style .=  ViewHelper::alphaomega($count++);
+						}
+						echo ViewHelper::linkProject($game->directory . '/', $game->title, 'class="' . $style . '"' . $image); 
 					?>
 				</li>
 			<?php endforeach; ?>

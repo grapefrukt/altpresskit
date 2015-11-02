@@ -37,10 +37,14 @@
 	border-bottom-color: rgb(0, 152, 182);
 }
 
+#games .tall {
+    height: 180px;
+    line-height: 395px;
+}
+
 #images img {
 	width: 100%;
 }
-
 
 .video p {
 	white-space: nowrap;
