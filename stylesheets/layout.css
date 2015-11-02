@@ -143,6 +143,10 @@ dt, #factsheet caption {
 	background: rgb(0, 152, 182);
 }
 
+#historydescription, #about {
+	text-align: justify;
+}
+
 .container > *:not(#dummy-menu):not(#factsheet):not(#historydescription) {
     float: right !important;
 }
