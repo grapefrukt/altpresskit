@@ -8,9 +8,6 @@ require 'controllers/presskit.php';
 require 'helpers/errorhelper.php';
 require 'helpers/updatehelper.php';
 
-// detects if mod_rewrite is available
-ViewHelper::$mod_rewrite = getenv('HTTP_MOD_REWRITE') == 'On' ? true : false;
-
 // convienience function to set constants if not defined, used in config files
 function set($const, $value) { defined($const) || define($const, $value); }
 
@@ -23,6 +20,9 @@ if (!file_exists('config.php' )) {
 
 // load defaults
 require 'config-defaults.php';
+
+// detects if mod_rewrite is available (or if force flag is set)
+ViewHelper::$mod_rewrite = (FORCE_MOD_REWRITE == 'true' || getenv('HTTP_MOD_REWRITE') == 'On');
 
 $requestUrl = $_SERVER['REQUEST_URI'];
 

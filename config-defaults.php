@@ -7,6 +7,11 @@
 set('BASE_PATH', '');
 
 /**
+* Some hosts break the autodetect of mod_rewrite, set this to true to override the autodetect
+*/
+set('FORCE_MOD_REWRITE', 'false');
+
+/**
 * Promoter overwrite
 * Set to true (default), to have your promoter reviews overwrite any locally defined reviews
 * Set to false to append any reviews from promoter to the locally defined list
