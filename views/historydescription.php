@@ -33,9 +33,14 @@
 		<div id="games" class="eight columns">
 			<h2>Projects</h2>
 			<ul>
-			<?php 
-			$firstWide = sizeof($data->games) % 2 == 1;
-			foreach($data->games as $game): ?>
+			<?php
+			$count = 0;
+			foreach($data->games as $game) if (!isset($game->listed) || $game->listed != 0) $count++;
+			
+			$firstWide = $count % 2 == 1;
+			foreach($data->games as $game): 
+				if (isset($game->listed) && $game->listed == 0)	continue;
+				?>
 				<li>
 					<?php
 						$image = '';
