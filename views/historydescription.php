@@ -38,6 +38,7 @@
 			foreach($data->games as $game) if (!isset($game->listed) || $game->listed != 0) $count++;
 			
 			$firstWide = $count % 2 == 1;
+			$index = 0;
 			foreach($data->games as $game): 
 				if (isset($game->listed) && $game->listed == 0)	continue;
 				?>
@@ -50,7 +51,7 @@
 							$style = 'eight columns alpha omega tall';
 							$firstWide = false;
 						} else {
-							$style .=  ViewHelper::alphaomega($count++);
+							$style .=  ViewHelper::alphaomega($index++);
 						}
 						echo ViewHelper::linkProject($game->directory . '/', $game->title, 'class="' . $style . '"' . $image); 
 					?>
