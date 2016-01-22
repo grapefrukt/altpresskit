@@ -5,7 +5,7 @@ require 'loadhelper.php';
 class PromoterHelper {
 
 	public static function getData($game){
-		$data = LoadHelper::loadCached('http://promoterapp.com/dopresskit/' . $game->promoter['product'], PROMOTER_CACHE_DURATION);
+		$data = LoadHelper::loadCached('https://promoterapp.com/dopresskit/' . $game->promoter['product'], PROMOTER_CACHE_DURATION);
 		if($data == null) return;
 
 		$promoterxml = simplexml_load_string($data);
