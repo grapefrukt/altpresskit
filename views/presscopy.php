@@ -1,7 +1,10 @@
-<?php if(strtolower($data->pressCanRequestCopy) == 'true' || $data->pressCanRequestCopy == 1) : ?>
+<?php if(isset($data->pressCanRequestCopy)) : ?>
 
-<div id="presscopy" class="twelve columns">
+<div id="presscopy" class="twelve columns row">
 	<h2>Request press copy</h2>
+
+	<?php if(strtolower($data->pressCanRequestCopy) == 'true' || $data->pressCanRequestCopy == 1) : ?>
+
 	<form action="." >
 		<fieldset class="five columns alpha">
 			<label for="email">E-mail</label>
@@ -17,7 +20,13 @@
 
 	</form>
 
-	<p class="twelve columns alpha omega">If you prefer you can also request a copy <a href="#contact">via e-mail</a></p>
+	<?php else: ?>
+
+	<p>Request a copy of this game using <a href="<?php echo $data->pressCanRequestCopy; ?>">this form</a>.</p>
+
+	<?php endif; ?>
+
+	<p>If you prefer you can also request a copy <a href="#contact">via e-mail</a>.</p>
 
 </div>
 

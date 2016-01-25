@@ -162,6 +162,11 @@ dt, #factsheet caption {
 	float: right;
 }
 
+#presscopy form {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
 blockquote {
 	margin: 0;
 	padding: 0;
