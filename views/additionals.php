@@ -1,3 +1,4 @@
+<?php if (isset($data->additionals)): ?>
 <div id="additionals" class="twelve columns">
 	<h2>Additional Links</h2>
 	<dl>
@@ -9,3 +10,4 @@
 </div>
 
 <hr class="twelve columns" />
+<?php endif; ?>
