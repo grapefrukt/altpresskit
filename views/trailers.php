@@ -1,10 +1,10 @@
-<?php 
+<?php
 	function videolink($key, $label, $data, &$list, $directory){
 		if (!isset($data[$key])) return;
 		if($key == 'youtube'){
-			$list[] = ViewHelper::link('http://youtu.be/' . $data[$key], $label);
+			$list[] = ViewHelper::link('//youtu.be/' . $data[$key], $label);
 		} else if($key == 'vimeo'){
-			$list[] = ViewHelper::link('https://vimeo.com/' . $data[$key], $label);
+			$list[] = ViewHelper::link('//vimeo.com/' . $data[$key], $label);
 		} else {
 			$list[] = ViewHelper::link('/' . BASE_PATH . 'data/' . $directory . '/trailers/' . $data[$key], $label);
 		}
@@ -12,7 +12,7 @@
 ?>
 <div id="trailers" class="twelve columns">
 	<h2>Videos</h2>
-	<?php 
+	<?php
 	$count = 0;
 	foreach($trailers as $trailer){
 		$links = array();
@@ -39,9 +39,9 @@
 
 			<div class="widescreen">
 				<?php if(isset($trailer['youtube'])): ?>
-					<iframe src="http://www.youtube.com/embed/<?php echo $trailer['youtube'] ?>?autohide=1&amp;hd=1&amp;controls=1&amp;modestbranding=1&amp;rel=0&amp;showinfo=1&amp;allowfullscreen" allowfullscreen></iframe>
+					<iframe src="//www.youtube.com/embed/<?php echo $trailer['youtube'] ?>?autohide=1&amp;hd=1&amp;controls=1&amp;modestbranding=1&amp;rel=0&amp;showinfo=1&amp;allowfullscreen" allowfullscreen></iframe>
 				<?php elseif (isset($trailer['vimeo'])): ?>
-					<iframe src="http://player.vimeo.com/video/'<?php echo $trailer['vimeo'] ?>" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+					<iframe src="//player.vimeo.com/video/'<?php echo $trailer['vimeo'] ?>" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 				<?php endif; ?>
 			</div>
 		</div>
