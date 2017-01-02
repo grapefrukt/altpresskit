@@ -2,7 +2,7 @@
 ini_set('display_errors','On');
 error_reporting(-1);
 
-define('VERSION', '0.1.2');
+define('VERSION', '0.1.3');
 
 require 'controllers/presskit.php';
 require 'helpers/errorhelper.php';
@@ -43,7 +43,7 @@ if (isset($_GET['p']) && $_GET['p'] != ''){
 
 	// if mod_rewrite is available and the request doesn't end with a slash, redirect to one that does
 	if (ViewHelper::$mod_rewrite && strlen($requestUrl) > 1 && substr($requestUrl, -1) != '/'){
-		header('HTTP/1.1 301 Moved Permanently'); 
+		header('HTTP/1.1 301 Moved Permanently');
 		header('Location: /' . BASE_PATH  . $requestUrl . '/');
 		exit();
 	}
@@ -54,7 +54,7 @@ if (isset($_GET['p']) && $_GET['p'] != ''){
 
 // if mod_rewrite is available and we're on a legacy url, redirect to the new, nicer one
 if (ViewHelper::$mod_rewrite && isset($_GET['p'])){
-	header('HTTP/1.1 301 Moved Permanently'); 
+	header('HTTP/1.1 301 Moved Permanently');
 	header('Location: /' . BASE_PATH . $requestUrl);
 	exit();
 }
@@ -62,7 +62,7 @@ if (ViewHelper::$mod_rewrite && isset($_GET['p'])){
 // checks for new updates and installs them if updates are enabled
 if (UpdateHelper::check()){
 	// if it did install updates, redirects to this page again to make sure nothing gets broken as files are changed
-	header('Location: /' . BASE_PATH . '/' . $requestUrl . '?updated=1'); 
+	header('Location: /' . BASE_PATH . '/' . $requestUrl . '?updated=1');
 	exit();
 }
 
