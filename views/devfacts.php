@@ -23,8 +23,10 @@
 		<?php foreach($data->games as $game): ?>
 			<dd><?php echo ViewHelper::linkProject($game->directory, $game->title); ?></dd>
 		<?php endforeach; ?>
-
-		<dt>Phone:</dt>
-		<dd><?php echo ViewHelper::callto($data->phone); ?></dd>
+		
+		<?php if(isset($data->phone)) : ?>
+			<dt>Phone:</dt>
+			<dd><?php echo ViewHelper::callto($data->phone); ?></dd>
+		<?php endif; ?>
 	</dl>
 </div>
