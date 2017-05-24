@@ -32,6 +32,7 @@
 </div>
 
 <hr class="twelve columns" />
+<?php endif; ?>
 
 <?php if(isset($data->logo)): ?>
 <div id="logo" class="twelve columns">
@@ -44,6 +45,4 @@
 </div>
 
 <hr class="twelve columns" />
-<?php endif; ?>
-
 <?php endif; ?>
