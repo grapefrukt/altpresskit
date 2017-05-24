@@ -20,9 +20,9 @@
 	<ul>
 	<?php foreach($data->quotes as $quote): ?>
 		<li>
-			<blockquote cite="<?php echo $quote['link']; ?>">
+			<?php echo '<blockquote' . (isset($quote['link']) ? ('cite="' . $quote['link'] . '"') : '') . '>'; ?>
 				<span><?php echo $quote['description']; ?></span>
-				<footer><?php echo $quote['name']; ?>, <a href="<?php echo $quote['link']; ?>"><?php echo $quote['website']; ?></a></footer>
+				<footer><?php echo $quote['name']; ?><?php if(isset($quote['link'])) { echo ', <a href="' . $quote['link'] . '">' . $quote['website'] . '</a></footer>'; }?>
 			</blockquote>
 		</li>
 	<?php endforeach; ?>
