@@ -5,16 +5,19 @@
 		<dd><?php echo $developer->title; ?></dd>
 		<dd><?php echo $developer->basedIn; ?></dd>
 
-		<?php if($data->isDeveloper) : ?>
-			<dt>Founding date:</dt>
-		<?php else : ?>
-			<dt>Release date:</dt>
-		<?php endif; ?>
-		<dd><?php echo $data->releaseDate; ?></dd>
+		<?php
+		if (isset($data->releaseDate)) {
+			if($data->isDeveloper) {
+				echo '<dt>Founding date:</dt>';
+			} else {
+				echo '<dt>Release date:</dt>';
+			}
+			echo '<dd>', $data->releaseDate, '</dd>';
+		}?>
 
-		<dt>Platforms:</dt>
 		<?php
 		if (isset($data->platforms)) {
+			echo '<dt>Platforms:</dt>';
 			foreach($data->platforms as $platform) {
 				if(isset($platform['link'])) {
 					echo '<dd>', ViewHelper::link($platform['link'], $platform['name']), '</dd>';
@@ -25,9 +28,13 @@
 		}
 		?>
 
+		<dt>Social:</dt>
+		<?php foreach($data->socials as $social): ?>
+			<dd><?php echo ViewHelper::link($social['link'], $social['name']); ?></dd>
+		<?php endforeach; ?>
+
 		<dt>Website:</dt>
 		<dd><?php echo ViewHelper::link($data->website); ?></dd>
-	</dl>
 
 	<?php if($data->prices != null) : ?>
 	<table class="prices">
