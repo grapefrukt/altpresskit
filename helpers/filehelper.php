@@ -11,6 +11,8 @@ class FileHelper {
 
 		while (false !== ($entry = readdir($handle))) {
 			if (array_search($entry, FileHelper::$blacklist) !== false) continue;
+			// folder starts with an underscore, ignore it
+			if (substr($entry, 0, 1) === "_") continue;
 			if ($entry == '') continue;
 
 			$dirs[] = $entry;
