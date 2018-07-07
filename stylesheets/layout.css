@@ -310,6 +310,14 @@ button[disabled]:hover {
 	transition-duration: 1s;
 }
 
+h1.has-image {
+	background-size: contain;
+	background-position: left center;
+	background-repeat: no-repeat;
+	text-indent: -9999px;
+	padding-bottom: 15%;
+}
+
 /* #Media Queries
 ================================================== */
 

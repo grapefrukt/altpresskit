@@ -3,14 +3,15 @@
 require 'helpers/filehelper.php';
 
 class Model {
-	
+
 	protected $data;
 
 	public $isDeveloper = false;
 
-	public $images = array();	
+	public $images = array();
+	public $icon;
 	public $logo;
-
+	
 	public $logoZip;
 	public $imageZip;
 
@@ -25,6 +26,10 @@ class Model {
 					unset($this->images[$key]);
 				}
 
+				if (Model::endsWith($image, 'icon.png')) {
+					$this->icon = $image;
+				}
+
 				if (Model::endsWith($image, 'images.zip')) {
 					$this->imageZip = $image;
 					unset($this->images[$key]);
@@ -36,6 +41,9 @@ class Model {
 				}
 			}
 		}
+
+		if (!isset($this->icon)) $this->icon = $this->logo;
+
 	}
 
 	public function __get($param) {

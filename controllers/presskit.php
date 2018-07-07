@@ -1,4 +1,4 @@
-<?php 
+<?php
 require 'controller.php';
 require 'models/developer.php';
 require 'models/game.php';
@@ -17,6 +17,7 @@ class PresskitController extends Controller {
 		ViewHelper::$isHome = true;
 		ViewHelper::$title = 'presskit for ' . $this->developer->title;
 		ViewHelper::$header = $this->developer->title;
+		ViewHelper::$headerImage = $this->developer->icon;
 		ViewHelper::render('devfacts', array('data' => $this->developer));
 		ViewHelper::render('historydescription', array('data' => $this->developer));
 		ViewHelper::render('images', array('data' => $this->developer));
@@ -31,13 +32,15 @@ class PresskitController extends Controller {
 		}
 
 		$game = $this->developer->games[$directory];
-		
+
 		if(isset($game->promoter['product'])) {
 			PromoterHelper::getData($game);
 		}
 
 		ViewHelper::$title = 'presskit for ' . $game->title . ' by ' . $this->developer->title;
 		ViewHelper::$header = $game->title;
+		ViewHelper::$headerImage = "../" . $game->icon;
+		ViewHelper::$headerColor = $game->color;
 		ViewHelper::render('gamefacts', array('data' => $game, 'developer' => $this->developer));
 		ViewHelper::render('historydescription', array('data' => $game));
 		ViewHelper::render('images', array('data' => $game));
@@ -51,23 +54,23 @@ class PresskitController extends Controller {
 
 	public function email($directory){
 		$game = $this->developer->games[$directory];
-		
+
 		$email = isset($_POST['email']) ? $_POST['email'] : '';
 		$publication = isset($_POST['publication']) ? $_POST['publication'] : '';
-		
+
 		ViewHelper::render('email_presscopy', array('game' => $game, 'email' => $email, 'publication' => $publication));
 		$body = ob_get_contents();
 		ob_end_clean();
-		
+
 		$result = EmailHelper::send(EMAIL_SEND_TO, $_POST['email'], 'Request for Press Copy via presskit', $body);
-		
+
 		ob_start();
 		if ($result === true){
 			echo 'OK';
 		} else {
 			echo $result;
 		}
-		
+
 		ViewHelper::$template = 'ajax';
 	}
 

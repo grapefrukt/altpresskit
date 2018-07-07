@@ -49,11 +49,10 @@
 					echo '<li>', $warnings, '</li>';
 				}
 				echo '</ul>';
-			} 
+			}
 		?>
-		<header>
-			<h1 class="sixteen columns"><?php echo ViewHelper::$header; ?></h1>
-		</header>
+
+		<?php ViewHelper::render('header'); ?>
 
 		<div id="menu" class="four columns">
 			<ul>

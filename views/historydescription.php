@@ -36,16 +36,16 @@
 			<?php
 			$count = 0;
 			foreach($data->games as $game) if (!isset($game->listed) || $game->listed != 0) $count++;
-			
+
 			$firstWide = $count % 2 == 1;
 			$index = 0;
-			foreach($data->games as $game): 
+			foreach($data->games as $game):
 				if (isset($game->listed) && $game->listed == 0)	continue;
 				?>
 				<li>
 					<?php
 						$image = '';
-						if ($game->images != null) $image = 'style="background-image: url(' . reset($game->images) . ');"';
+						if ($game->icon != null) $image = 'style="background-image: url(' . $game->icon . ');"';
 						$style = 'four columns ';
 						if ($firstWide) {
 							$style = 'eight columns alpha omega tall';
@@ -53,7 +53,7 @@
 						} else {
 							$style .=  ViewHelper::alphaomega($index++);
 						}
-						echo ViewHelper::linkProject($game->directory . '/', $game->title, 'class="' . $style . '"' . $image); 
+						echo ViewHelper::linkProject($game->directory . '/', $game->title, 'class="' . $style . '"' . $image);
 					?>
 				</li>
 			<?php endforeach; ?>
