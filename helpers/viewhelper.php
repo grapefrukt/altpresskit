@@ -16,7 +16,12 @@ class ViewHelper {
 	}
 
 	public static function link($url, $text = '', $extra = ''){
-		if ($text == '') $text = $url;
+		// if no link text is supplied, we use the url
+		if ($text == '') {
+			$text = $url;
+			// strips out the http/https at the start of the url
+			$text = preg_replace('/^http(s)?:\/\//', '', $text);
+		}
 		return '<a href="' . $url . '" ' . $extra . '>' . $text . '</a>';
 	}
 
