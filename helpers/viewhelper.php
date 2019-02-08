@@ -43,9 +43,12 @@ class ViewHelper {
 		return '<i class="icon-' . $name . ' icon-large"></i>';
 	}
 
-	public static function alphaomega($count, $offset = 0){
-		if($offset) $count++;
-		return $count % 2 == 0 ? 'alpha' : 'omega';
+	public static function alphaomega($count, $offset = 0, $modulo = 2){
+		if ($offset) $count++;
+		$rest = $count % $modulo;
+		if ($rest === 0) return 'alpha';
+		if ($rest === $modulo - 1) return 'omega';
+		return '';
 	}
 }
 
