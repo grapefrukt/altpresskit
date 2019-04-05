@@ -19,7 +19,7 @@ The idea is also to stay backwards compatible with the original, but this may ch
 
 ## Examples
 
-http://altpresskit.grapefrukt.com/ runs on the latest checkout from github on the exact same data set as http://presskit.grapefrukt.com/ (which happens to be my guerilla branch of the original presskit())
+https://presskit.grapefrukt.com/ uses this project
 
 ## Who made this?
 
