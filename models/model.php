@@ -21,11 +21,11 @@ class Model {
 
 		if($this->images != null) {
 			foreach($this->images as $key => $image){
-				if (Model::endsWith($image, 'logo.png')) {
+				if (Model::endsWith($image, 'logo.png') || Model::endsWith($image, 'logo.svg')) {
 					$this->logo = $image;
 					unset($this->images[$key]);
 				}
-
+				
 				if (Model::endsWith($image, 'icon.png')) {
 					$this->icon = $image;
 				}
