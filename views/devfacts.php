@@ -24,7 +24,10 @@
 			<dd><?php echo ViewHelper::linkProject($game->directory, $game->title); ?></dd>
 		<?php endforeach; ?>
 
+		<?php if ($data->phone != "") : ?>
 		<dt>Phone:</dt>
 		<dd><?php echo ViewHelper::callto($data->phone); ?></dd>
+		<?php endif; ?>
+		
 	</dl>
 </div>
