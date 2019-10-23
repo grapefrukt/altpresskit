@@ -32,7 +32,7 @@
 	<?php if($data->prices != null) : ?>
 	<table class="prices">
 		<?php foreach($data->prices as $key => $platform): ?>
-			<caption>Regular Price <?php echo $key != null ? '(' . $key . ')' : ''; ?></caption>
+			<caption>Pricing <?php echo $key != null ? '(' . $key . ')' : ''; ?></caption>
 			<?php foreach($platform as $price): ?>
 				<tr>
 					<td><?php echo $price['currency']; ?></td>
