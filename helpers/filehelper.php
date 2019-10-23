@@ -53,6 +53,8 @@ class FileHelper {
 			$images[$directory][] = str_replace(DIRECTORY_SEPARATOR, '/', $location);
 		}
 
+		ksort($images);
+
 		return $images;
 	}
 
