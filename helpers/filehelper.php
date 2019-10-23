@@ -31,20 +31,27 @@ class FileHelper {
 		if (!($handle = @opendir($path))) return null;
 
 		$images = array();
+		$objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path), RecursiveIteratorIterator::SELF_FIRST); 
+		foreach($objects as $location => $object){
+			$name = $object->getFileName(); 
 
-		while (false !== ($entry = readdir($handle))) {
-			if (array_search($entry, FileHelper::$blacklist) !== false) continue;
-			if (!is_file($path . '/' . $entry)) continue;
+			// ignore all folders, they're not going in the image list
+			if (!$object->isFile()) continue;
+			// ignore any filename that hits the blacklist
+			if (array_search($name, FileHelper::$blacklist) !== false) continue;
 			// file starts with an underscore, ignore it
-			if (substr($entry, 0, 1) === "_") continue;
+			if (substr($name, 0, 1) === "_") continue;
 			// file starts with a period, ignore it
-			if (substr($entry, 0, 1) === ".") continue;
-			$images[] = $path . '/' . $entry;
+			if (substr($name, 0, 1) === ".") continue;
+
+			// gets the folder name as relative to the current game
+			$directory = str_replace($path, '', $object->getPath());
+
+			// removes any leading slashes from the directory name
+			$directory = ltrim($directory, DIRECTORY_SEPARATOR);
+
+			$images[$directory][] = str_replace(DIRECTORY_SEPARATOR, '/', $location);
 		}
-
-		closedir($handle);
-
-		sort($images);
 
 		return $images;
 	}

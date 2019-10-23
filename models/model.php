@@ -19,25 +19,28 @@ class Model {
 		$this->data = $data;
 		$this->images = FileHelper::getImages('data' . (strlen($directory) > 0 ? '/' : '') . $directory . '/images');
 
-		if($this->images != null) {
-			foreach($this->images as $key => $image){
-				if (Model::endsWith($image, 'logo.png') || Model::endsWith($image, 'logo.svg')) {
-					$this->logo = $image;
-					unset($this->images[$key]);
-				}
+		if ($this->images != null) {
+			foreach ($this->images as $folder => $images) {
+				foreach ($images as $key => $image){
 				
-				if (Model::endsWith($image, 'icon.png')) {
-					$this->icon = $image;
-				}
+					if (Model::endsWith($image, 'logo.png') || Model::endsWith($image, 'logo.svg')) {
+						$this->logo = $image;
+						unset($this->images[$folder][$key]);
+					}
+					
+					if (Model::endsWith($image, 'icon.png')) {
+						$this->icon = $image;
+					}
 
-				if (Model::endsWith($image, 'images.zip')) {
-					$this->imageZip = $image;
-					unset($this->images[$key]);
-				}
+					if (Model::endsWith($image, 'images.zip')) {
+						$this->imageZip = $image;
+						unset($this->images[$folder][$key]);
+					}
 
-				if (Model::endsWith($image, 'logo.zip')) {
-					$this->logoZip = $image;
-					unset($this->images[$key]);
+					if (Model::endsWith($image, 'logo.zip')) {
+						$this->logoZip = $image;
+						unset($this->images[$folder][$key]);
+					}
 				}
 			}
 		}
