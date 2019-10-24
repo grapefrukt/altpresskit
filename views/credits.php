@@ -2,9 +2,6 @@
 	<p>
 		This presskit runs on <a href="https://github.com/grapefrukt/altpresskit">alt. presskit</a> 
 		by <a href="http://grapefrukt.com/">grapefrukt</a>, version <?php echo VERSION; ?>
-		<?php if(UpdateHelper::$hasUpdate) : ?>
-			<span class="update"> (<abbr title="<?php echo UpdateHelper::$newVersion; ?>">Update available</abbr>)</span>
-		<?php endif; ?>.
 	</p>
 	<p>
 		Which in turn is based on <a href="http://dopresskit.com/">presskit()</a> 

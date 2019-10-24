@@ -2,8 +2,6 @@
 require 'controller.php';
 require 'models/developer.php';
 require 'models/game.php';
-require 'helpers/promoterhelper.php';
-require 'helpers/emailhelper.php';
 
 class PresskitController extends Controller {
 
@@ -32,11 +30,7 @@ class PresskitController extends Controller {
 		}
 
 		$game = $this->developer->games[$directory];
-
-		if(isset($game->promoter['product'])) {
-			PromoterHelper::getData($game);
-		}
-
+		
 		ViewHelper::$title = 'presskit for ' . $game->title . ' by ' . $this->developer->title;
 		ViewHelper::$header = $game->title;
 		ViewHelper::$headerImage = "../" . $game->icon;
@@ -50,28 +44,6 @@ class PresskitController extends Controller {
 		ViewHelper::render('presscopy', array('data' => $game));
 		ViewHelper::render('about', array('data' => $this->developer));
 		ViewHelper::render('teamcontact', array('data' => $game, 'developer' => $this->developer));
-	}
-
-	public function email($directory){
-		$game = $this->developer->games[$directory];
-
-		$email = isset($_POST['email']) ? $_POST['email'] : '';
-		$publication = isset($_POST['publication']) ? $_POST['publication'] : '';
-
-		ViewHelper::render('email_presscopy', array('game' => $game, 'email' => $email, 'publication' => $publication));
-		$body = ob_get_contents();
-		ob_end_clean();
-
-		$result = EmailHelper::send(EMAIL_SEND_TO, $_POST['email'], 'Request for Press Copy via presskit', $body);
-
-		ob_start();
-		if ($result === true){
-			echo 'OK';
-		} else {
-			echo $result;
-		}
-
-		ViewHelper::$template = 'ajax';
 	}
 
 	public function credits(){

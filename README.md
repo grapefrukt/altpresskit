@@ -26,11 +26,4 @@ https://presskit.grapefrukt.com/ uses this project
 * [Martin Jonasson](http://grapefrukt.com)
 
 ## To Do
-- Add 404 page for missing projects 
-- [x] Provide default templates for data.xml
-- [x] Google Analytics
-- [x] Fix link parsing
-- [x] Make updating/installing easier
-- [x] Deal with missing data.xml, images folder and so on
-- [x] Integrate skeleton (not as submodule)
-- [x] Look into updating of installations via github
+- Add 404 page for missing projects

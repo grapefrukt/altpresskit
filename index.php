@@ -6,7 +6,6 @@ define('VERSION', '0.1.3');
 
 require 'controllers/presskit.php';
 require 'helpers/errorhelper.php';
-require 'helpers/updatehelper.php';
 
 // convienience function to set constants if not defined, used in config files
 function set($const, $value) { defined($const) || define($const, $value); }
@@ -59,13 +58,6 @@ if (ViewHelper::$mod_rewrite && isset($_GET['p'])){
 	exit();
 }
 
-// checks for new updates and installs them if updates are enabled
-if (UpdateHelper::check()){
-	// if it did install updates, redirects to this page again to make sure nothing gets broken as files are changed
-	header('Location: /' . BASE_PATH . '/' . $requestUrl . '?updated=1');
-	exit();
-}
-
 ob_start();
 
 if(!ErrorHelper::hasErrors()){
@@ -73,9 +65,7 @@ if(!ErrorHelper::hasErrors()){
 }
 
 if(!ErrorHelper::hasErrors()){
-	if(isset($_POST['email'])){
-		$presskit->email($requestUrl);
-	} else if ($requestUrl == ''){
+	if ($requestUrl == ''){
 		$presskit->index();
 	} else if ($requestUrl == 'credits'){
 		$presskit->credits();
