@@ -14,7 +14,9 @@
 		$count = 0;
 		$isodd = sizeof($images) % 2 == 1;
 		if ($folder != $lastFolder) : ?>
+		</ul>
 			<h3><?php echo $folder; ?></h3>
+		<ul>
 		<?php endif;
 		$lastFolder = $folder;
 
