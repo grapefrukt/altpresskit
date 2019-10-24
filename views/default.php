@@ -73,7 +73,7 @@
 	</div><!-- container -->
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	<script src="/<?php echo BASE_PATH; ?>js/presskit.js" type="text/javascript"></script>	
+	<script src="/<?php echo BASE_PATH; ?>js/presskit.js"></script>	
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
