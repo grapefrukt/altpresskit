@@ -71,10 +71,14 @@ dt:not(:first-child), #factsheet caption  {
 	padding-top: 10px;
 }
 
-dt, #factsheet caption {
+h5, dt, #factsheet caption {
 	font-weight: bold;
 	font-style: normal;
 	display: block;
+}
+
+h5 {
+	padding-top: 1.1em;
 }
 
 #factsheet td {
