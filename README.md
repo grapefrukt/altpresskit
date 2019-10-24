@@ -24,6 +24,3 @@ https://presskit.grapefrukt.com/ uses this project
 ## Who made this?
 
 * [Martin Jonasson](http://grapefrukt.com)
-
-## To Do
-- Add 404 page for missing projects

@@ -27,10 +27,12 @@ class PresskitController extends Controller {
 	public function game($directory){
 		if(!isset($this->developer->games[$directory])){
 			ErrorHelper::logError('Could not find game data in directory or incorrect BASE_PATH set in config.php');
+			$this->fourohfour();
+			return;
 		}
 
 		$game = $this->developer->games[$directory];
-		
+
 		ViewHelper::$title = 'presskit for ' . $game->title . ' by ' . $this->developer->title;
 		ViewHelper::$header = $game->title;
 		ViewHelper::$headerImage = "../" . $game->icon;
@@ -49,6 +51,13 @@ class PresskitController extends Controller {
 	public function credits(){
 		ViewHelper::$title = ViewHelper::$header = 'alt. presskit credits';
 		ViewHelper::render('credits');
+	}
+
+	public function fourohfour(){
+		http_response_code(404);
+		ViewHelper::$title = 'presskit for ' . $this->developer->title . ' - error';
+		ViewHelper::$header = '404';
+		ViewHelper::render('404');
 	}
 }
 ?>
