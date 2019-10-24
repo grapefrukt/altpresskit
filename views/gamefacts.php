@@ -27,24 +27,21 @@
 
 		<dt>Website:</dt>
 		<dd><?php echo ViewHelper::link($data->website); ?></dd>
-
-		<?php if($data->prices != null) : ?>
-		<h5>Pricing:</h5>
-		
-		<table class="prices">
-			<?php foreach($data->prices as $key => $platform): ?>
-				<?php echo $key != null ? '<caption>' . $key . '</caption>' : ''; ?>
-				<?php foreach($platform as $price): ?>
-					<tr>
-						<td><?php echo $price['currency']; ?></td>
-						<td><?php echo $price['value']; ?></td>
-					</tr>
-				<?php endforeach; ?>
-			<?php endforeach; ?>
-		</table>
-		<?php endif; ?>
-	
 	</dl>
 
+	<?php if($data->prices != null) : ?>
+	<h5>Pricing:</h5>
 	
+	<table class="prices">
+		<?php foreach($data->prices as $key => $platform): ?>
+			<?php echo $key != null ? '<caption>' . $key . '</caption>' : ''; ?>
+			<?php foreach($platform as $price): ?>
+				<tr>
+					<td><?php echo $price['currency']; ?></td>
+					<td><?php echo $price['value']; ?></td>
+				</tr>
+			<?php endforeach; ?>
+		<?php endforeach; ?>
+	</table>
+	<?php endif; ?>
 </div>
