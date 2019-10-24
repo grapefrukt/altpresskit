@@ -40,7 +40,7 @@ class ViewHelper {
 	}
 
 	public static function icon($name){
-		return '<i class="icon-' . $name . ' icon-large"></i>';
+		return '<i class="icon-' . $name . ' icon-large">&nbsp;</i>';
 	}
 
 	public static function alphaomega($count, $offset = 0, $modulo = 2){
