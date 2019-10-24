@@ -50,6 +50,9 @@ class FileHelper {
 			// removes any leading slashes from the directory name
 			$directory = ltrim($directory, DIRECTORY_SEPARATOR);
 
+			// replaces any spaces with %20
+			$location = str_replace(' ', '%20', $location);
+
 			$images[$directory][] = str_replace(DIRECTORY_SEPARATOR, '/', $location);
 		}
 
