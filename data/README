@@ -1,3 +1,9 @@
 Put your data.xml, images/videos and game specific subfolders in this folder.
 A good template to start from is provided by the original presskit() project: 
 https://github.com/ramiismail/dopresskit/blob/master/archive/_data.xml
+
+The data file for my presskit is available at:
+https://presskit.grapefrukt.com/data/data.xml
+
+If you wish to look at the data for a game (which goes in a subfolder to this directory), I suggest this one:
+https://presskit.grapefrukt.com/data/holedown/data.xml
