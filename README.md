@@ -17,6 +17,13 @@ The idea is also to stay backwards compatible with the original, but this may ch
 * Valid HTML5
 * Nice cropping of thumbnails
 
+## Installation instructions
+
+1. [Download the zip file](https://github.com/grapefrukt/altpresskit/archive/master.zip) and extract it. 
+2. Make a copy of `config-defaults.php` and name it `config.php`, edit if needed
+3. Add your `data.xml` to the data folder, [follow the instructions there if needed](https://github.com/grapefrukt/altpresskit/tree/master/data)
+4. Upload to your server
+
 ## Examples
 
 https://presskit.grapefrukt.com/ uses this project
